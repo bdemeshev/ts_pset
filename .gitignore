@@ -1,0 +1,8 @@
+
+*.aux
+
+ts_ps_main.log
+
+ts_ps_main.out
+
+ts_ps_main.synctex.gz

@@ -1,0 +1,28 @@
+\documentclass[12pt,a4paper]{article}
+
+\input{title_bor_utf8_knitr}
+
+%\usepackage{showkeys} % показывать метки
+
+\input{prob_and_sol_utf8}
+
+
+\begin{document}
+\parindent=0 pt
+
+\section{Задачи}
+\problemonly
+\input{ts_pset}
+
+
+\restoresection
+\section{Решения}
+\solutiononly
+
+\addtocounter{secsolution}{1} % 1 - число section до команды \problemonly
+
+\input{ts_pset}
+
+
+
+\end{document}
