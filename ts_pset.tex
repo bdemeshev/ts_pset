@@ -1,126 +1,163 @@
 %%%%%%%%%%%%%%%%% стационарность
 
-\problem{
+\begin{problem}
 Пусть $Y_{t}$ - стационарный процесс. \\
-Верно ли, что стационарны: \\
-а) $Z_{t}=2Y_{t}$ \\
-б) $Z_{t}=Y_{t}+1$ \\
-в) $Z_{t}=\Delta Y_{t}$ \\
-г) $Z_{t}=2Y_{t}+3Y_{t-1}$ }
-\solution{а, б, в, г - стационарны}
+Верно ли, что стационарны: 
+\begin{enumerate}
+\item $Z_{t}=2Y_{t}$ 
+\item $Z_{t}=Y_{t}+1$ 
+\item $Z_{t}=\Delta Y_{t}$ 
+\item $Z_{t}=2Y_{t}+3Y_{t-1}$ 
+\end{enumerate}
+\end{problem}
+\begin{solution}
+а, б, в, г - стационарны
+\end{solution}
 
 
 
 
-\problem{
+
+\begin{problem}
 Известно, что временной ряд $Y_{t}$ порожден стационарным процессом, задаваемым соотношением $Y_{t}=1+0.5Y_{t-1}+\varepsilon_{t}$. Имеется 1000 наблюдений. \\
 Вася построил регрессию $Y_{t}$ на константу и $Y_{t-1}$. Петя построил регрессию на константу и $Y_{t+1}$.\\
-Как (примерно) будут соотносится между собой их оценки коэффициентов? }
-\solution{Они будут примерно одинаковы. Оценка наклона определяется автоковариационной функцией.}
+Как (примерно) будут соотносится между собой их оценки коэффициентов? 
+\end{problem}
+\begin{solution}
+Они будут примерно одинаковы. Оценка наклона определяется автоковариационной функцией.
+\end{solution}
+
 
 
 %%%%%%%%%%%%%%%%%% ARCH-GARCH
 
 
-\problem{
+\begin{problem}
 Рассмотрим следующий AR(1)-ARCH(1) процесс: \\
 $Y_{t}=1+0.5Y_{t-1}+\varepsilon_{t}$, $\varepsilon_{t}=\nu_{t}\cdot \sigma_{t}$ \\
 $\nu_{t}$ независимые $N(0;1)$ величины. \\
 $\sigma^{2}_{t}=1+0.8\varepsilon^{2}_{t-1}$\\
-Также известно, что $Y_{100}=2$, $Y_{99}=1.7$ \\
-а) Найдите $E_{100}(\varepsilon^{2}_{101})$, $E_{100}(\varepsilon^{2}_{102})$, $E_{100}(\varepsilon^{2}_{103})$, $E(\varepsilon^{2}_{t})$ \\
-б) $Var(Y_{t})$, $Var(Y_{t}|\mathcal{F}_{t-1})$ \\
-в) Постройте доверительный интервал для $Y_{101}$: \\
-- проигнорировав условную гетероскедастичность \\
-- учтя условную гетерескедастичность }
-\solution{}
+Также известно, что $Y_{100}=2$, $Y_{99}=1.7$ 
+\begin{enumerate}
+\item Найдите $E_{100}(\varepsilon^{2}_{101})$, $E_{100}(\varepsilon^{2}_{102})$, $E_{100}(\varepsilon^{2}_{103})$, $E(\varepsilon^{2}_{t})$ 
+\item $Var(Y_{t})$, $Var(Y_{t}|\mathcal{F}_{t-1})$ 
+\item Постройте доверительный интервал для $Y_{101}$: 
+\begin{enumerate}
+\item проигнорировав условную гетероскедастичность 
+\item учтя условную гетерескедастичность
+\end{enumerate}
+\end{enumerate}
+\end{problem}
+\begin{solution}
+\end{solution}
 
-
-\problem{
-Рассмотрим GARCH(1,1) процесс \\
-...}
-\solution{}
-
+\begin{problem}
+Рассмотрим GARCH(1,1) процесс ...
+\end{problem}
+\begin{solution}
+\end{solution}
 
 
 %%%%%%%%%%%%%%%%% Оператор лага
 
-\problem{
+\begin{problem}
 Пусть $X_{t}$, $t=0,1,2,...$ - случайный процесс и $Y_{t}=(1+L)^{t}X_{t}$.
-Выразите $X_{t}$ с помощью $Y_{t}$ и оператора лага $L$.}
+Выразите $X_{t}$ с помощью $Y_{t}$ и оператора лага $L$.
+
 \solution{$X_{t}=(1-L)^{t}Y_{t}$}
 
-\problem{Пусть $ F_{n} $ - последовательность чисел Фибоначчи. Упростите величину
-\[ F_{1}+C^{1}_{5}F_{2}+C^{2}_{5}F_{3}+C^{3}_{5}F_{4}+C^{4}_{5}F_{5}+C^{5}_{5}F_{6} \]}
-\solution{$ F_{n}=L(1+L)F_{n} $, значит $ F_{n}=L^{k}(1+L)^{k}F_{n} $ или $ F_{n+k}=(1+L)^{k}F_{n} $}
+\begin{problem}Пусть $ F_{n} $ - последовательность чисел Фибоначчи. Упростите величину
+\[ F_{1}+C^{1}_{5}F_{2}+C^{2}_{5}F_{3}+C^{3}_{5}F_{4}+C^{4}_{5}F_{5}+C^{5}_{5}F_{6} \]
+\end{problem}
+\begin{solution}
+$ F_{n}=L(1+L)F_{n} $, значит $ F_{n}=L^{k}(1+L)^{k}F_{n} $ или $ F_{n+k}=(1+L)^{k}F_{n} $
+\end{solution}
 
 
 
 
-\problem{
+\begin{problem}
 Пусть $X_{t}$, $t=...-2,-1,0,1,2,...$ - случайный процесс. И $Y_{t}=X_{-t}$. Какое рассуждение верно?
 
-а) $LY_{t}=LX_{-t}=X_{-t-1}$
-
-б) $LY_{t}=Y_{t-1}=X_{-t+1}$ }
-\solution{ а - неверно, б - верно. }
+\begin{enumerate}
+\item $LY_{t}=LX_{-t}=X_{-t-1}$
+\item $LY_{t}=Y_{t-1}=X_{-t+1}$ 
+\end{enumerate}
+\end{problem}
+\begin{solution}
+а - неверно, б - верно.
+\end{solution}
 
 
 %%%%%%%%%%%%%%%% состояние-наблюдение, фильтр Калмана
 
-\problem{Представьте процесс AR(1),
+\begin{problem}Представьте процесс AR(1),
 $y_{t}=0.9y_{t-1}-0.2y_{t-2}+\varepsilon_{t}$,
-$\varepsilon\sim$WN(0;1) в виде модели состояние-наблюдение. \\
-а) Выбрав в качестве состояний вектор $\left(%
+$\varepsilon\sim$WN(0;1) в виде модели состояние-наблюдение. 
+\begin{enumerate}
+\item Выбрав в качестве состояний вектор $\left(%
 \begin{array}{c}
   y_{t} \\
   y_{t-1} \\
 \end{array}%
-\right)$ \\
-б) Выбрав в качестве состояний вектор $\left(%
+\right)$ 
+\item Выбрав в качестве состояний вектор $\left(%
 \begin{array}{c}
   y_{t} \\
   \hat{y}_{t,1} \\
 \end{array}%
-\right)$ \\
-Найдите дисперсии ошибок состояний }
-\solution{}
+\right)$ 
+\end{enumerate}
+Найдите дисперсии ошибок состояний 
+\end{problem}
+\begin{solution}
+\end{solution}
 
-\problem{Представьте процесс MA(1),
+\begin{problem}Представьте процесс MA(1),
 $y_{t}=\varepsilon_{t}+0.5\varepsilon_{t-1}$,
-$\varepsilon\sim$WN(0;1) в виде модели состояние-наблюдение. \\
-a) $\left(%
+$\varepsilon\sim$WN(0;1) в виде модели состояние-наблюдение. 
+\begin{enumerate}
+\item $\left(%
 \begin{array}{c}
   \varepsilon_{t} \\
   \varepsilon_{t-1} \\
 \end{array}%
-\right)$ \\
-b) $\left(%
+\right)$ 
+\item  $\left(%
 \begin{array}{c}
   \varepsilon_{t}+0.5\varepsilon_{t-1} \\
   0.5\varepsilon_{t} 
 \end{array}%
-\right)$ }
-\solution{}
+\right)$ 
+\end{enumerate}
+\end{problem}
+\begin{solution}
+\end{solution}
 
-\problem{Представьте процесс ARMA(1,1),
+
+\begin{problem}Представьте процесс ARMA(1,1),
 $y_{t}=0.5y_{t-1}+\varepsilon_{t}+\varepsilon_{t-1}$,
 $\varepsilon\sim$WN(0;1) в
 виде модели состояние-наблюдение. \\
 Вектор состояний имеет вид $x_{t},x_{t-1}$, где
-$x_{t}=\frac{1}{1-0.5L}\varepsilon_{t}$ }
-\solution{}
+$x_{t}=\frac{1}{1-0.5L}\varepsilon_{t}$ 
+\end{problem}
+\begin{solution}
+\end{solution}
 
 
-\problem{ Рекурсивные коэффициенты 
+
+\begin{problem} Рекурсивные коэффициенты 
 \begin{enumerate}
 \item Oцените модель вида $y_{t}=a+b_{t}x_{t}+\varepsilon_{t}$,
 где $b_{t}=b_{t-1}$. 
 \item Сравните графики filtered state и smoothed state. 
 \item Сравните финальное состояние $b_{T}$ с коэффициентом в
 обычной модели линейной регрессии, $y_{t}=a+bx_{t}+\varepsilon_{t}$. 
-\end{enumerate} }
-\solution{}
+\end{enumerate} 
+\end{problem}
+\begin{solution}
+\end{solution}
 
 
 
