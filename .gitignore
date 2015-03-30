@@ -30,3 +30,15 @@ ts_ps_main.tex
 ts_pset.Rmd
 
 ts_ps_main.tex
+
+*.idx
+
+*.log
+
+*.out
+
+*.gz
+
+ts_pset_main.tex
+
+*.toc

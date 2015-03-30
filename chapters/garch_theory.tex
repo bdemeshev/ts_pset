@@ -1,0 +1,180 @@
+\begin{center}
+\textsc{Положение GARCH-модели среди классических моделей временных рядов}
+\end{center}
+\[
+    Y_t = c + \sum\nolimits_{i=1}^p{{\phi_i}{Y_{t-i}}} + \varepsilon_t + \sum\nolimits_{j=1}^q{{\theta_j}{\varepsilon_{t-j}}} + \sum\nolimits_{j=1}^k{{\beta_j}{X_{tj}}} \text{,}
+\]
+\[
+    \varepsilon_t = \sigma_t\cdot\xi_t \text{,}
+\]
+\[
+    \sigma_t^2 = \omega + \sum\nolimits_{i=1}^s{\delta_i\sigma_{t-i}^2 + \sum\nolimits_{j=1}^r{\gamma_j\varepsilon_{t-j}^2}} \text{.}
+\]
+
+\begin{itemize}
+  \item при $s=0$, $r=0$, $k=0$ ARMAX/GARCH --- это классическая ARMA($p,q$)-модель,
+  \item при $s=0$, $r=0$ ARMAX/GARCH --- это ARMA($p,q$)-модель, в которой в качестве объясняющих переменных дополнительно включены экзогенные ряды $\{X_{t1}\}$,...,$\{X_{tk}\}$.
+\end{itemize}
+
+\begin{center}
+\textsc{Пример использования GARCH-модели}
+\end{center}
+
+Пусть ${P_t}$ --- цена акции, фьючерса или значение некоторого индекса цен финансовых инструментов в момент времени $t$.
+\begin{itemize}\index{доходность простая|textbf}\index{доходность логарифмическая|textbf}
+  \item \textit{простой доходностью} называется $\frac{P_t-P_{t-1}}{P_{t-1}}$,
+  \item \textit{логарифмической доходностью} называется $\ln\frac{P_t}{P_{t-1}}$.
+\end{itemize}
+\textsc{Связь между простой и логарифмической доходностью}
+\begin{center}
+    $\ln\frac{P_t}{P_{t-1}} = \ln\left(\frac{P_{t-1} + P_t - P_{t-1}}{P_{t-1}}\right) = \ln\left(1 + \frac{P_t - P_{t-1}}{P_{t-1}}\right)$.
+\end{center}
+Используя формулу Тейлора $\ln(1+x) = x + o(x)$ при $x\rightarrow0$, можем записать следующее приближенное равенство:
+\begin{center}
+    $\ln\frac{P_t}{P_{t-1}} \approx \frac{P_t - P_{t-1}}{P_{t-1}}$
+\end{center}
+при малых значениях простой доходности $\frac{P_t - P_{t-1}}{P_{t-1}}$.
+
+В финансовой математике, как правило, используется логарифмическая доходность. Это связано с тем, что
+\begin{center}
+    $\ln\frac{P_T}{P_0} = \ln\frac{P_1}{P_0} + \ln\frac{P_2}{P_1} + ... + \ln\frac{P_{T}}{P_{T-1}}$,
+\end{center}
+т.\,е. логарифмическая доходность за период $[0;T]$ есть сумма логарифмических доходностей за периоды ${[0;1], [1;2], \ldots, [T-1;T]}$.
+\begin{itemize}
+  \item В качестве зависимой переменной $Y_t$ возьмём логарифмическую доходность $\ln\frac{P_t}{P_{t-1}}$ интересующего нас финансового инструмента.
+  \item Простейшая модель для расчёта и прогнозирования волатильности --- ARMAX($p=0, q=0, k=0$)/GARCH($s=1, r=1$)-модель:
+\end{itemize}
+\[
+    Y_t = c + \varepsilon_t \text{,}
+\]
+\[
+    \varepsilon_t = \sigma_t\cdot\xi_t \text{,}
+\]
+\[
+    \sigma_t^2 = \omega + \delta\cdot\sigma_{t-1}^2 + \gamma\cdot\varepsilon_{t-1}^2 \text{,}
+\]
+\begin{itemize}
+  \item Дальнейшее изложение будем вести на примере данной модели.
+\end{itemize}
+\begin{Definition}\index{процесс GARCH|textbf}
+Пусть $\omega > 0, \, \delta \geq 0, \, \gamma \geq 0, \, \delta + \gamma < 1$ --- некоторые параметры, а $\sigma_0, \, \xi_0, \, \xi_1, \, \xi_2, \ldots$ --- независимые случайные величины такие, что
+\[
+    \mathbb{E}\sigma_{0}^{2}=\frac{\omega }{1-\delta -\gamma} \text{,} \quad \mathbb{E}\xi_t = 0 \text{,} \quad \mathbb{E}\xi_t^2 = 1 \text{,} \quad t \geq 1 \text{.}
+\]
+В этом случае говорят, что последовательность случайных величин $\{\varepsilon_t\}_{t=0}^{\infty}$ образует \textit{GARCH(1,1)-процесс}, если выполнены следующие соотношения:
+\[
+    \varepsilon_0 = \sigma_0 \cdot \xi_0 \text{,}
+\]
+\[
+    \varepsilon_t = \sigma_t \cdot \xi_t \text{,} \quad \sigma_t^2 = \omega + \delta \cdot \sigma_{t-1}^2 + \gamma \cdot \varepsilon_{t-1}^2 \text{,} \quad t \geq 1 \text{.}
+\]
+\end{Definition}
+
+Напомним определения слабо стационарного процесса и белого шума.
+\begin{Definition}
+Случайный процесс $\{X_t\}_{t=0}^\infty$ называется \textit{слабо стационарным}, если
+    \begin{enumerate}
+      \item $\mathbb{E}{X_t^2} < \infty$ для всех $t \geq 0$;
+      \item $\mathbb{E}{X_t} = \mathbb{E}{X_s}$ для всех $t,\, s \geq 0$;
+      \item $\Variance{X_t} = \Variance{X_s}$ для всех $t,\, s \geq 0$;
+      \item $\operatorname{cov}(X_{t+h},X_{s+h}) = \operatorname{cov}(X_{t},X_{s})$ для всех $t,\,s \geq 0$ и любого $h$ такого, что $t+h \geq 0$ и $s+h \geq 0$.
+    \end{enumerate}
+\end{Definition}
+
+\begin{Definition}
+Слабо стационарный процесс $\{X_t\}_{t=0}^\infty$ называется \textit{белым шумом}, если $\mathbb{E}{X_t} = 0$ и $\operatorname{cov}(X_t,X_s) = 0$ при $t, \,s \geq 0$, $t \neq s$.
+\end{Definition}
+
+Ниже мы покажем, что GARCH(1,1)-процесс $\{\varepsilon_t\}_{t=0}^{\infty}$ является белым шумом.
+
+\begin{Lemma}\label{GARCH Lemma 1}
+Пусть случайные величины $X_1, \ldots, X_m$ и $Y_1, \ldots, Y_n$ независимы в совокупности. Тогда для любых (борелевских) функций $f \colon \mathbb{R}^m \to \mathbb{R}^1$ и $g \colon \mathbb{R}^n \to \mathbb{R}^1$ случайные величины $U = f(X_1, \ldots, X_m)$ и $V = g(Y_1, \ldots, Y_n)$ независимы.
+\end{Lemma}
+\begin{proof}
+См., например, Ширяев\,А.\,Н. \cite{Shiryaev_Prob}, гл. II, § 6, стр. 256.
+\end{proof}
+
+\begin{Lemma}\label{GARCH Lemma 2}
+Пусть независимые случайные величины $X$ и $Y$ имеют конечное математическое ожидание. Тогда
+\begin{itemize}
+  \item[(i)] математическое ожидание случайной величины ${X}\cdot{Y}$ конечно;
+  \item[(ii)] $\mathbb{E}[{X}\cdot{Y}] = \mathbb{E}{X}\cdot\mathbb{E}{Y}$.
+\end{itemize}
+\end{Lemma}
+
+\begin{proof}
+См. Ширяев\,А.\,Н. \cite{Shiryaev_Prob}, гл. II, § 6, стр. 267, теорема 6.
+\end{proof}
+
+\begin{Lemma}\label{GARCH Lemma 3}
+Пусть случайные величины $X^2$ и $Y^2$ имеют конечное математическое ожидание. Тогда случайная величина $X \cdot Y$ также имеет конечное математическое ожидание.
+\end{Lemma}
+
+\begin{proof}
+В силу свойства математического ожидания $|\mathbb{E}Z| \leq \mathbb{E}|Z|$ и неравенства $|X \cdot Y| \leq \tfrac{1}{2} \cdot X^2 + \tfrac{1}{2} \cdot Y^2$ получаем:
+\[
+    |\mathbb{E}[X \cdot Y]| \leq \mathbb{E}|X \cdot Y| \leq \tfrac{1}{2} \cdot \mathbb{E}X^2 + \tfrac{1}{2} \cdot \mathbb{E}Y^2 < \infty \text{.}
+\]
+\end{proof}
+
+\begin{Lemma}\label{GARCH Lemma 4}
+Для любого $t \geq 0$ случайные величины $\sigma_t$ и $\xi_t$ независимы.
+\end{Lemma}
+
+\begin{proof}
+При $t = 0$ независимость случайных величин $\sigma_0$  и $\xi_0$ содержится непосредственно в определении GARCH(1,1)-процесса.
+
+При $t = 1$ независимость $\sigma_1$ и $\xi_1$ следует из того, что случайные величины $\sigma_0$, $\xi_0$, $\xi_1$ независимы в совокупности, и того, что
+$\sigma_1 = \sqrt{\omega + \delta\cdot\sigma_0^2 + \gamma\cdot\sigma_0^2\cdot\xi_0^2}$, т.\,е. $\sigma_1$ является функцией от $\sigma_0$, $\xi_0$.
+
+Независимость $\sigma_t$ и $\xi_t$ при $t \geq 2$ обосновывается аналогично тому, как это сделано при $t = 1$. Действительно, $\sigma_t$ есть функция от $\sigma_0, \xi_0, \xi_1, \ldots, \xi_{t-1}$, при этом величины $\sigma_0, \xi_0, \xi_1, \ldots, \xi_t$ независимы в совокупности.
+\end{proof}
+
+\begin{Proposition}\label{GARCH Proposition 1}
+Пусть последовательность случайных величин $\{\varepsilon_t\}_{t=0}^{\infty}$ образует GARCH(1,1)-процесс. Тогда для любого $t \geq 0$
+\begin{itemize}
+\item[(i)] $\mathbb{E}{\varepsilon_t^2}<\infty$;
+\item[(ii)] $\mathbb{E}{{\varepsilon }_{t}}=0$;
+\item[(iii)] $\mathbb{E}\varepsilon _{t}^{2}=\frac{\omega }{1-\delta -\gamma }$;
+\item[(iv)] $\operatorname{cov}\left( {{\varepsilon }_{t}},{{\varepsilon }_{s}} \right)=0$ при $t\ne s$, $s\ge 0$.
+\end{itemize}
+\end{Proposition}
+
+\begin{proof}
+(i) ($t=0$) По условию случайные величины $\sigma_0^2$ и $\xi_0^2$ имеют конечное математическое ожидание. При этом независимость $\sigma_0^2$ и $\xi_0^2$ вытекает из независимости $\sigma_0$ и $\xi_0$. Следовательно, в силу леммы 2 случайная величина $\varepsilon_0^2 = \sigma_0^2\cdot\xi_0^2$ имеет конечное математическое ожидание.
+
+($t=1$) Согласно лемме 4, случайные величины $\sigma_1$ и $\xi_1$ независимы. Значит, $\sigma_1^2$ и $\xi_1^2$ также независимы. Кроме того, по условию, математическое ожидание $\xi_1^2$ конечно, а конечность $\mathbb{E}{\sigma_1^2}$ вытекает из конечности $\mathbb{E}{\sigma_0^2}$, $\mathbb{E}{\varepsilon_0^2}$ и формулы $\sigma_1^2 = \omega + \delta\cdot\sigma_0^2 + \gamma\cdot\varepsilon_0^2$. Следовательно, $\varepsilon_1^2 = \sigma_1^2\cdot\xi_1^2$ имеет конечное математическое ожидание.
+
+($t\geq2$) Доказательство конечности $\mathbb{E}{\varepsilon_t^2}$ при $t\geq2$ проводится аналогично случаю $t = 1$.
+
+(ii) Для $t\geq0$ имеем
+\[
+    \mathbb{E}\varepsilon_t = \mathbb{E}[\sigma_t\cdot\xi_t] = \mathbb{E}{\sigma_t}\cdot\mathbb{E}{\xi_t} = 0 \text{.}
+\]
+Здесь мы воспользовались независимостью случайных величин $\sigma_t$ и $\xi_t$, а также $\mathbb{E}{\xi_t} = 0$.
+
+(iii) ($t=0$) При $t=0$ имеем
+\[
+    \mathbb{E}{\varepsilon_0^2} = \mathbb{E}{\sigma_0^2}\cdot\mathbb{E}{\xi_0^2} = \frac{\omega}{1-\delta -\gamma}\cdot1 = \frac{\omega}{1-\delta -\gamma} \text{.}
+\]
+
+($t=1$) Пусть $t=1$. По лемме 4 и доказанному выше, получаем
+\[
+    \mathbb{E}{\varepsilon_1^2} = \mathbb{E}{\sigma_1^2}\cdot\mathbb{E}{\xi_1^2} = \mathbb{E}{\sigma_1^2} = \omega + \delta\cdot\mathbb{E}{\sigma_0^2} + \gamma\cdot\mathbb{E}{\varepsilon_0^2} =
+\]
+\[
+    =\omega + \delta\cdot{\frac{\omega}{1-\delta -\gamma}} + \gamma\cdot{\frac{\omega}{1-\delta -\gamma}} = \frac{\omega}{1-\delta -\gamma} \text{.}
+\]
+
+($t\geq2$) Доказательство утверждения при $t\geq2$ выполняется аналогично рассмотренному случаю $t=1$.
+
+(iv) Пусть $0\leq{s}<t$. Математическое ожидание $\xi_t$ конечно по определению GARCH(1,1)-процесса. Конечность математического ожидания случайной величины $\sigma_t\cdot\varepsilon_s$ следует из конечности $\mathbb{E}{\sigma_t^2}$ и $\mathbb{E}{\varepsilon_s^2}$, а также леммы \ref{GARCH Lemma 3}. Кроме этого, при $0\leq{s}<t$ случайные величины $\xi_t$ и $\sigma_t\cdot\varepsilon_s$ независимы. Поэтому
+\[
+    \operatorname{cov}(\varepsilon_t,\varepsilon_s) = \mathbb{E}[\varepsilon_t\cdot\varepsilon_s] = \mathbb{E}[\xi_t\cdot(\sigma_t\cdot\varepsilon_s)] = \mathbb{E}{\xi_t}\cdot\mathbb{E}[\sigma_t\cdot\varepsilon_s] = 0 \text{.}
+\]
+\end{proof}
+
+\begin{Remark}
+В ходе доказательства пункта (i) утверждения \ref{GARCH Proposition 1} попутно было установлено, что $\mathbb{E}\sigma_t^2 < \infty$ для всех $t \geq 0$.
+\end{Remark}
+

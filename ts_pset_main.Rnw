@@ -1,0 +1,118 @@
+\documentclass[11pt]{book}
+%\usepackage[T1,T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usepackage{amsmath, amssymb, amsthm, mathrsfs, amsfonts, dsfont, fancyhdr}
+\usepackage{embedfile} % Чтобы код LaTeXа включился как приложение в PDF-файл
+\usepackage{amscd}
+\usepackage{makeidx}
+\usepackage[colorlinks=true]{hyperref}
+
+%\usepackage[paperwidth=145mm,paperheight=215mm,height=182mm,width=113mm,top=20mm,includefoot]{geometry} % размер страниц в УРСС
+\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+
+
+\newcommand{\e}{\varepsilon}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\Var}{\mathbb{V}\mathrm{ar}}
+\newcommand{\cF}{\mathcal{F}}
+
+
+
+\embedfile[desc={Main tex file}]{\jobname.tex} % Прикрепить код LaTeXа в PDF-файл
+% makefile: zip all tex, здесь сделать ссылку на zip
+
+\usepackage[matrix,arrow,curve]{xy}
+\usepackage{soul}
+\usepackage{color}
+
+
+\title{Анализ временных рядов в задачах и упражнениях}
+\author{Борзых\,Д.\,А., Демешев\,Б.\,Б.}
+\date{\today}
+
+\newtheoremstyle{mythm}{\topsep}{\topsep}{\it}{\parindent}{\bfseries}{.}{.5em}{}
+\newtheoremstyle{mydef}{\topsep}{\topsep}{}{\parindent}{\bfseries}{.}{.5em}{}
+
+
+\theoremstyle{mythm}
+\newtheorem{Proposition}{Утверждение}[chapter]
+\newtheorem{Lemma}{Лемма}[chapter]
+\newtheorem{Theorem}{Теорема}[chapter]
+\newtheorem{Corollary}{Следствие}[chapter]
+
+
+\theoremstyle{mydef}
+\newtheorem{Definition}{Определение}[chapter]
+\newtheorem{Example}{Пример}[chapter]
+\newtheorem{Task}{Задача}[chapter]
+\newtheorem{Exercise}{Упражнение}[chapter]
+\newtheorem{Remark}{Замечание}[chapter]
+\newtheorem{Question}{Вопрос}[chapter]
+
+%\newtheorem{solution}{Решение}
+\newtheorem{question}{Задача}
+
+
+\renewenvironment{proof}
+    {\ifhmode\par\fi\addvspace{\topsep}\leavevmode{\it Доказательство.}}
+    {\hfill$\scriptstyle\blacksquare$\par\addvspace{\topsep}}
+
+\newenvironment{solution}
+    {\ifhmode\par\fi\addvspace{\topsep}\leavevmode{\it Решение.}}
+    {\hfill$\scriptstyle\blacksquare$\par\addvspace{\topsep}}
+
+\pagestyle{fancy}
+
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}
+
+\fancyhead[LE,RO]{\small \thepage}
+\fancyhead[RE]{\small \leftmark}
+\fancyhead[LO]{\small \rightmark} %{\bfseries \leftmark}
+
+\makeindex
+\begin{document}
+\maketitle
+
+
+
+\chapter*{Предисловие}
+
+\dots
+\chapter{GARCH-модели}
+
+\section{Элементы теории}
+\input{chapters/garch_theory}
+
+\section{Задачи}
+<<child='chapters/garch_problems.Rnw'>>=
+@
+
+% в биб-файл 
+%---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+\begin{thebibliography}{11}
+\bibitem{Greene}
+Greene\,W.\,H. Econometric Analysis. Prentice Hall, 2012.
+
+\bibitem{Francq}
+Francq\,C., Zakoian\,J.-M. GARCH models: structure, statistical inference, and financial applications. Wiley, 2010.
+
+\bibitem{Tsay}
+Tsay\,R.\,S. Analysis of Financial Time Series. Wiley, 2005.
+
+\bibitem{Shiryaev_SFM}
+Ширяев\,А.\,Н. Основы стохастической финансовой математики. Т.~1. M.: ФАЗИС, 2004.
+
+\bibitem{Shiryaev_Prob}
+Ширяев\,А.\,Н. Вероятность. Т. \,1. М.: МЦНМО, 2007.
+\end{thebibliography}
+
+\printindex
+
+\chapter*{Список обозначений}
+
+\tableofcontents
+
+\end{document} 
