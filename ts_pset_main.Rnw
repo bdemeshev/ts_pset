@@ -1,16 +1,33 @@
 \documentclass[11pt]{book}
-%\usepackage[T1,T2A]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage[russian]{babel}
+
+%%%%% russian xetex
+\usepackage{fontspec}
+\usepackage{polyglossia}
+
+\setmainlanguage{russian}
+\setotherlanguages{english}
+
+% download "Linux Libertine" fonts:
+% http://www.linuxlibertine.org/index.php?id=91&L=1
+\setmainfont{Linux Libertine O} % or Helvetica, Arial, Cambria
+% why do we need \newfontfamily:
+% http://tex.stackexchange.com/questions/91507/
+\newfontfamily{\cyrillicfonttt}{Linux Libertine O}
+%%%%% end russian xetex
+
+
+
+
 \usepackage{amsmath, amssymb, amsthm, mathrsfs, amsfonts, dsfont, fancyhdr}
-\usepackage{embedfile} % Чтобы код LaTeXа включился как приложение в PDF-файл
 \usepackage{amscd}
 \usepackage{makeidx}
 \usepackage[colorlinks=true]{hyperref}
 
 %\usepackage[paperwidth=145mm,paperheight=215mm,height=182mm,width=113mm,top=20mm,includefoot]{geometry} % размер страниц в УРСС
-\usepackage[left=2cm,right=2cm,top=2cm,bottom=2cm]{geometry}
+\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
 
+\usepackage{enumitem}
+\usepackage{answers} % дележка ответов и вопросов
 
 \newcommand{\e}{\varepsilon}
 \newcommand{\E}{\mathbb{E}}
@@ -19,10 +36,10 @@
 
 
 
-\embedfile[desc={Main tex file}]{\jobname.tex} % Прикрепить код LaTeXа в PDF-файл
-% makefile: zip all tex, здесь сделать ссылку на zip
+% не включаем в текст, тк есть репозиторий, однако для облегчения работы с репой:
+% makefile: zip all tex, здесь сделать ссылку на zip - для воспроизводимости неплохо бы :)
 
-\usepackage[matrix,arrow,curve]{xy}
+\usepackage[matrix, arrow, curve]{xy}
 \usepackage{soul}
 \usepackage{color}
 
@@ -58,9 +75,9 @@
     {\ifhmode\par\fi\addvspace{\topsep}\leavevmode{\it Доказательство.}}
     {\hfill$\scriptstyle\blacksquare$\par\addvspace{\topsep}}
 
-\newenvironment{solution}
-    {\ifhmode\par\fi\addvspace{\topsep}\leavevmode{\it Решение.}}
-    {\hfill$\scriptstyle\blacksquare$\par\addvspace{\topsep}}
+% \newenvironment{solution}
+%     {\ifhmode\par\fi\addvspace{\topsep}\leavevmode{\it Решение.}}
+%     {\hfill$\scriptstyle\blacksquare$\par\addvspace{\topsep}}
 
 \pagestyle{fancy}
 
@@ -72,6 +89,39 @@
 \fancyhead[LO]{\small \rightmark} %{\bfseries \leftmark}
 
 \makeindex
+
+
+\theoremstyle{definition}
+%\newtheorem{problem}{Задача}
+%\numberwithin{problem}{chapter}
+
+\Newassociation{sol}{solution}{solution_file}
+% sol --- имя окружения внутри задач
+% solution --- имя окружения внутри solution_file
+% solution_file --- имя файла в который будет идти запись решений
+% можно изменить далее по ходу
+
+% very useful during de-bugging!
+% \usepackage[left]{showlabels}
+% \showlabels{hypertarget}
+% \showlabels{hyperlink}
+
+\newlist{myenum}{enumerate}{3}
+\newcounter{problem}[chapter]
+\newenvironment{problem}%
+  {%
+  \refstepcounter{problem}%
+  %  hyperlink to solution
+       \hypertarget{problem:{\thechapter.\theproblem}}{}%
+       \Writetofile{solution_file}{\protect\hypertarget{soln:\thechapter.\theproblem}{}}%
+       \begin{myenum}[label=\bfseries\protect\hyperlink{soln:\thechapter.\theproblem}{\thechapter.\theproblem},ref=\thechapter.\theproblem]
+       \item%
+      }%
+      {%
+      \end{myenum}}
+
+
+
 \begin{document}
 \maketitle
 
@@ -79,17 +129,67 @@
 
 \chapter*{Предисловие}
 
-\dots
-\chapter{GARCH-модели}
+План:
 
-\section{Элементы теории}
-\input{chapters/garch_theory}
+1. Стационарные/нестационарные процессы, ARMA
+сюда оператор лага, ACF/PACF
 
-\section{Задачи}
-<<child='chapters/garch_problems.Rnw'>>=
+2. Экспоненциальное сглаживание и тета метод
+
+3. ГАРЧ
+
+4. Единичный корень (до ВАР) (ADF)
+
+5. VAR/VECM/коинтеграция
+
+6. Midas
+
+7. Байесовские ВАР
+
+8. Модели состояние-наблюдение/фильтр Калмана/TVP
+
+
+
+
+<<child='chapters/010_stationary.Rnw'>>=
 @
 
-% в биб-файл 
+
+<<child='chapters/030_garch_problems.Rnw'>>=
+@
+
+
+<<child='chapters/050_var_problems.Rnw'>>=
+@
+
+
+<<child='chapters/080_state_space.Rnw'>>=
+@
+
+\chapter{Решения и ответы к избранным задачам}
+\chaptermark{Избранные решения}
+
+
+% для гиперссылок на условия
+% http://tex.stackexchange.com/questions/45415
+\renewenvironment{solution}[1]{%
+         % add some glue
+         \vskip .5cm plus 2cm minus 0.1cm%
+         {\bfseries \hyperlink{problem:#1}{#1.}}%
+}%
+{%
+}%
+
+
+
+
+\input{solutions/sols_010}
+\input{solutions/sols_030}
+\input{solutions/sols_050}
+\input{solutions/sols_080}
+
+
+% в биб-файл
 %---------------------------------------------------------------------------------------------------------------------------------------------------------
 
 \begin{thebibliography}{11}
@@ -115,4 +215,4 @@ Tsay\,R.\,S. Analysis of Financial Time Series. Wiley, 2005.
 
 \tableofcontents
 
-\end{document} 
+\end{document}

@@ -1,0 +1,55 @@
+\Opensolutionfile{solution_file}[solutions/sols_030]
+% в квадратных скобках фактическое имя файла
+
+\chapter{GARCH}
+
+\input{chapters/030_garch_theory}
+
+\begin{problem}
+Рассмотрим следующий AR(1)-ARCH(1) процесс: \\
+$Y_{t}=1+0.5Y_{t-1}+\varepsilon_{t}$, $\varepsilon_{t}=\nu_{t}\cdot \sigma_{t}$ \\
+$\nu_{t}$ независимые $N(0;1)$ величины. \\
+$\sigma^{2}_{t}=1+0.8\varepsilon^{2}_{t-1}$\\
+Также известно, что $Y_{100}=2$, $Y_{99}=1.7$
+\begin{enumerate}
+\item Найдите $E_{100}(\varepsilon^{2}_{101})$, $E_{100}(\varepsilon^{2}_{102})$, $E_{100}(\varepsilon^{2}_{103})$, $E(\varepsilon^{2}_{t})$
+\item $Var(Y_{t})$, $Var(Y_{t}|\mathcal{F}_{t-1})$
+\item Постройте доверительный интервал для $Y_{101}$:
+\begin{enumerate}
+\item проигнорировав условную гетероскедастичность
+\item учтя условную гетерескедастичность
+\end{enumerate}
+\end{enumerate}
+\begin{sol}
+\end{sol}
+\end{problem}
+
+
+
+
+\begin{problem}
+Рассмотрим GARCH(1,2) процесс $\e_t=\sigma_t \nu_t$, $\sigma^2=0.2+0.5\sigma^2_{t-1}+0.2\e_{t-1}^2+0.1\e_{t-2}^2$. Найдите безусловную дисперсию $\Var(y_t)$
+\begin{sol}
+
+\end{sol}
+\end{problem}
+
+
+\begin{problem}
+Для GARCH(1,1) процесса $\e_t=\sigma_t \nu_t$, $\sigma^2_{t}= w + \alpha \e_{t-1}^2+ \beta \sigma^2_{t-1}$ найдите $\E( \E(\e_t^2 | \cF_{t-1} ) )$
+\begin{sol}
+
+\end{sol}
+\end{problem}
+
+
+
+\begin{problem}
+Рассмотрим GARCH(1,1) процесс  $\e_t=\sigma_t \nu_t$, $\sigma^2_{t}=0.1 + 0.7 \sigma^2_{t-1} + 0.2 \e_{t-1}^2$. Известно, $\sigma_T=1$, $\e_T=1$. Найдите $\E(\sigma_{T+2}^2 | \cF_T )$.
+\begin{sol}
+
+\end{sol}
+\end{problem}
+
+
+\Closesolutionfile{solution_file}

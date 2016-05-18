@@ -1,0 +1,76 @@
+\Opensolutionfile{solution_file}[solutions/sols_080]
+% в квадратных скобках фактическое имя файла
+
+\chapter{Модели состояние-наблюдение}
+%%%%%%%%%%%%%%%%  фильтр Калмана
+
+\begin{problem}Представьте процесс AR(1),
+$y_{t}=0.9y_{t-1}-0.2y_{t-2}+\varepsilon_{t}$,
+$\varepsilon\sim$WN(0;1) в виде модели состояние-наблюдение.
+\begin{enumerate}
+\item Выбрав в качестве состояний вектор $\left(%
+\begin{array}{c}
+  y_{t} \\
+  y_{t-1} \\
+\end{array}%
+\right)$
+\item Выбрав в качестве состояний вектор $\left(%
+\begin{array}{c}
+  y_{t} \\
+  \hat{y}_{t,1} \\
+\end{array}%
+\right)$
+\end{enumerate}
+Найдите дисперсии ошибок состояний
+\begin{sol}
+\end{sol}
+\end{problem}
+
+\begin{problem}Представьте процесс MA(1),
+$y_{t}=\varepsilon_{t}+0.5\varepsilon_{t-1}$,
+$\varepsilon\sim$WN(0;1) в виде модели состояние-наблюдение.
+\begin{enumerate}
+\item $\left(%
+\begin{array}{c}
+  \varepsilon_{t} \\
+  \varepsilon_{t-1} \\
+\end{array}%
+\right)$
+\item  $\left(%
+\begin{array}{c}
+  \varepsilon_{t}+0.5\varepsilon_{t-1} \\
+  0.5\varepsilon_{t}
+\end{array}%
+\right)$
+\end{enumerate}
+\begin{sol}
+\end{sol}
+\end{problem}
+
+
+\begin{problem}Представьте процесс ARMA(1,1),
+$y_{t}=0.5y_{t-1}+\varepsilon_{t}+\varepsilon_{t-1}$,
+$\varepsilon\sim$WN(0;1) в
+виде модели состояние-наблюдение. \\
+Вектор состояний имеет вид $x_{t},x_{t-1}$, где
+$x_{t}=\frac{1}{1-0.5L}\varepsilon_{t}$
+\begin{sol}
+\end{sol}
+\end{problem}
+
+
+
+\begin{problem} Рекурсивные коэффициенты
+\begin{enumerate}
+\item Oцените модель вида $y_{t}=a+b_{t}x_{t}+\varepsilon_{t}$,
+где $b_{t}=b_{t-1}$.
+\item Сравните графики filtered state и smoothed state.
+\item Сравните финальное состояние $b_{T}$ с коэффициентом в
+обычной модели линейной регрессии, $y_{t}=a+bx_{t}+\varepsilon_{t}$.
+\end{enumerate}
+\begin{sol}
+\end{sol}
+\end{problem}
+
+
+\Closesolutionfile{solution_file}
