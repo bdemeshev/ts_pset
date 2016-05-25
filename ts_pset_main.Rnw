@@ -16,23 +16,31 @@
 %%%%% end russian xetex
 
 
-
+\usepackage{tikz}
 
 \usepackage{amsmath, amssymb, amsthm, mathrsfs, amsfonts, dsfont, fancyhdr}
 \usepackage{amscd}
 \usepackage{makeidx}
-\usepackage[colorlinks=true]{hyperref}
+\usepackage[colorlinks = true]{hyperref}
 
-%\usepackage[paperwidth=145mm,paperheight=215mm,height=182mm,width=113mm,top=20mm,includefoot]{geometry} % размер страниц в УРСС
-\usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+
+\usepackage[left = 2cm, right = 2cm, top = 2cm, bottom = 2cm]{geometry}
 
 \usepackage{enumitem}
 \usepackage{answers} % дележка ответов и вопросов
 
 \newcommand{\e}{\varepsilon}
 \newcommand{\E}{\mathbb{E}}
+\newcommand{\Cov}{\mathbb{C}\mathrm{ov}}
+\newcommand{\Corr}{\mathbb{C}\mathrm{orr}}
 \newcommand{\Var}{\mathbb{V}\mathrm{ar}}
 \newcommand{\cF}{\mathcal{F}}
+\newcommand{\hb}{\hat{\beta}}
+\newcommand{\hs}{\hat{\sigma}}
+\newcommand{\he}{\hat{\e}}
+\newcommand{\hy}{\hat{y}}
+
+
 
 
 
@@ -131,6 +139,8 @@
 
 План:
 
+0. Автокорреляция в ошибках линейной модели
+
 1. Стационарные/нестационарные процессы, ARMA
 сюда оператор лага, ACF/PACF
 
@@ -149,6 +159,19 @@
 8. Модели состояние-наблюдение/фильтр Калмана/TVP
 
 
+<<>>=
+library("knitr") # грамотное программирование
+library("tikzDevice") # сохранение графиков в формате tikz
+
+library("ggplot2") # симпатичные графики
+
+theme_set(theme_bw()) # чёрно-белая тема для графиков
+@
+
+
+<<child='chapters/005_correlated_e.Rnw'>>=
+@
+
 
 
 <<child='chapters/010_stationary.Rnw'>>=
@@ -156,6 +179,9 @@
 
 
 <<child='chapters/030_garch_problems.Rnw'>>=
+@
+
+<<child='chapters/040_unit_root.Rnw'>>=
 @
 
 
@@ -182,9 +208,10 @@
 
 
 
-
+\input{solutions/sols_005}
 \input{solutions/sols_010}
 \input{solutions/sols_030}
+\input{solutions/sols_040}
 \input{solutions/sols_050}
 \input{solutions/sols_080}
 

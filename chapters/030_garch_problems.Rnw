@@ -52,4 +52,143 @@ $\sigma^{2}_{t}=1+0.8\varepsilon^{2}_{t-1}$\\
 \end{problem}
 
 
+\begin{problem}
+Найдите безусловную дисперсию GARCH-процессов
+\begin{enumerate}
+\item $\e_t=\sigma_t \cdot z_t$, $\sigma^2_t=0.1+0.8\sigma^2_{t-1}+0.1\e^2_{t-1}$
+\item $\e_t=\sigma_t \cdot z_t$, $\sigma^2_t=0.4+0.7\sigma^2_{t-1}+0.1\e^2_{t-1}$
+\item $\e_t=\sigma_t \cdot z_t$, $\sigma^2_t=0.2+0.8\sigma^2_{t-1}+0.1\e^2_{t-1}$
+\end{enumerate}
+
+
+\begin{sol}
+$1$, $2$, $2$
+\end{sol}
+\end{problem}
+
+
+\begin{problem}
+Являются ли верными следующие утверждения?
+\begin{enumerate}
+\item GARCH-процесс является процессом белого шума, условная дисперсия которого
+изменяется во времени
+\item Модель GARCH(1,1) предназначена для прогнозирования меры изменчивости цены
+финансового инструмента, а не для прогнозирования самой цены инструмента
+\item При помощи GARCH-процесса можно устранять гетероскедастичность
+\item Безусловная дисперсия GARCH-процесса изменяется во времени
+\item Модель GARCH(1,1) может быть использована для прогнозирования
+волатильности финансовых инструментов на несколько торговых недель вперёд
+\end{enumerate}
+
+
+\begin{sol}
+\end{sol}
+\end{problem}
+
+
+
+\begin{problem}
+Рассмотрим GARCH-процесс $\e_t=\sigma_t \cdot z_t$, $\sigma^2_t=k+g_1\sigma^2_{t-1}+a_1\e^2_{t-1}$. Найдите
+\begin{enumerate}
+\item $\E(z_t)$, $\E(z_t^2)$, $\E(\e_t)$, $\E(\e_t^2)$
+\item $\Var(z_t)$, $\Var(\e_t)$, $\Var(\e_t \mid \mathcal{F}_{t-1})$
+\item $\E(\e_t \mid \mathcal{F}_{t-1})$, $\E(\e_t^2 \mid \mathcal{F}_{t-1})$, $\E(\sigma^2_t \mid \mathcal{F}_{t-1})$
+\item $\E(z_tz_{t-1})$, $\E(z_t^2z_{t-1}^2)$, $\Cov(\e_t,\e_{t-1})$, $\Cov(\e_t^2,\e_{t-1}^2)$
+\item $\lim_{h\to\infty} \E(\sigma^2_{t+h} \mid \mathcal{F}_t)$
+\end{enumerate}
+
+
+\begin{sol}
+\end{sol}
+\end{problem}
+
+
+
+\begin{problem}
+Используя 500 наблюдений дневных логарифмических доходностей $y_t$ ,
+была оценена GARCH(1,1)-модель: $\hy_t=-0.000708+\he_t$, $\e_t=\sigma_t \cdot z_t$, $\sigma^2_t=0.000455+0.6424\sigma^2_{t-1}+0.2509\e^2_{t-1}$. Также известно, что $\hs^2_{499}=0.002568$, $\he^2_{499}=0.000014$, $\he^2_{500}=0.002178$.
+Найдите
+\begin{enumerate}
+\item  $\hs^2_{500}$, $\hs^2_{501}$, $\hs^2_{502}$
+\item Волатильность в годовом выражении в процентах, соответствующую
+наблюдению с номером $t = 500$
+\end{enumerate}
+
+
+\begin{sol}
+\end{sol}
+\end{problem}
+
+
+\begin{problem}
+Рассмотрим ARCH(1) процесс
+\[
+\begin{cases}
+y_t = 2 + \e_t \\
+\e_t = \sigma_t \cdot \nu_t \\
+\sigma^2_t = 10 + 0.5\e_t^2
+\end{cases}
+\]
+
+\begin{enumerate}
+\item Найдите $\Var(y_{101})$, постройте 95\%-ый предиктивный интервал для $y_{101}$
+\item Известно, что $y_{100}=3$, постройте 95\%-ый предиктивный интервал для $y_{101}$
+\item Известно, что $y_{100}=12$, постройте 95\%-ый предиктивный интервал для $y_{101}$
+\end{enumerate}
+
+
+\begin{sol}
+\end{sol}
+\end{problem}
+
+\begin{problem}
+Может ли у GARCH процесса условная дисперсия $\e_t$ быть больше, чем безусловная? А меньше, чем безусловная?
+\begin{sol}
+Да, может быть и больше, и меньше.
+\end{sol}
+\end{problem}
+
+\begin{problem}
+Как известно, у GARCH процесса условная дисперсия $\e_t% может быть как больше, так и меньше безусловной.
+\begin{enumerate}
+\item Имеет ли смысл строить предиктивный интервал для $y_t$, используя условную дисперсию, если она больше безусловной?
+\item При построении предиктивного интервала эконометресса Агнесса использует безусловную дисперсию, если она меньше условной, и условную дисперсию, если она меньше безусловной. Корректно ли поступает Агнесса?
+\end{enumerate}
+\begin{sol}
+
+\end{sol}
+\end{problem}
+
+
+
+\begin{problem}
+Рассмотрим процесс AR(1)-GARCH(1,1):
+\[
+\begin{cases}
+y_t = 2 + 0.6 y_{t-1} + \e_t \\
+\e_t = \sigma_t \cdot \nu_t \\
+\sigma^2_t = 6 + 0.4 \sigma^2_{t-1} + 0.2\e_t^2
+\end{cases}
+\]
+
+
+Найдите $\Var(\e_t | \cF_{t-1})$, $\Var(y_t| \cF_{t-1})$, $\Var(\e_t)$, $\Var(y_t)$
+
+
+\begin{sol}
+\[
+\Var(\e_t | \cF_{t-1}) = \Var(y_t| \cF_{t-1}) = 6 + 0.4 \sigma^2_{t-1} + 0.2\e_t^2
+\]
+\[
+\Var(\e_t) = 6/(1-0.4-0.2)=6/0.4=15
+\]
+\[
+\Var(y_t)=15/(1-0.36)
+\]
+\end{sol}
+\end{problem}
+
+
+
+
 \Closesolutionfile{solution_file}

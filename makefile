@@ -33,3 +33,4 @@ clean:
 	-rm $(file_name).log
 	-rm $(file_name).toc
 	-rm figure/*.*
+	-rm R_plots/*.*

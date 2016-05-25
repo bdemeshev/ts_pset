@@ -44,3 +44,7 @@ ts_pset_main.tex
 *.toc
 
 solutions/*.*
+
+chapters/ts_pset_main-tikzDictionary
+
+R_plots/*.*
