@@ -566,6 +566,37 @@ y_t = 0.5 y_{t-1} + \e_t.
 
 
 
+\begin{problem}
+
+Рассмотрим стационарный процесс $y_t$, задаваемый уравнением
+\[
+y_t = 2 + 0.6 \cdot y_{t-1} - 0.08 y_{t-2} + \e_t,
+\]
+где $\e_t \sim \cN(0; 4)$.
+
+\begin{enumerate}
+\item  Найдите $\E_t(y_{t+1})$, $\Var_t(y_{t+1})$
+\item Найдите $\E_t(y_{t+2})$, $\Var_t(y_{t+2})$
+\item Постройте 95\%-ый предиктивный интервал для $y_{102}$, если $y_{99}=5$, $y_{100}=5.1$
+\item Найдите $\E(y_t)$, $\Var(y_t)$
+\item Найдите $\lim_{h\to\infty}\E_t(y_{t+h})$, $\lim_{h\to\infty}\Var_t(y_{t+h})$
+\end{enumerate}
+
+
+\begin{sol}
+
+$\E_t(y_{t+1})=2+0.6y_{t-1}-0.08y_{t-2}$, $\Var_t(y_{t+1})=4$
+
+$\E_t(y_{t+2})=3.2 + 0.28 y_t- 0.048y_{t-1}$, $\Var_t(y_{t+2})=1.36 \cdot 4$
+
+$\E_{100}(y_{102})= 4.388$, $\Var_{100}(y_{102})=5.44$.
+
+Предиктивный интервал $[4.388 - 1.96 \sqrt{5.44};4.388 + 1.96 \sqrt{5.44}]$
+
+$\E(y_t)=\frac{2}{0.48}\approx 4.17$
+
+\end{sol}
+\end{problem}
 
 
 \Closesolutionfile{solution_file}

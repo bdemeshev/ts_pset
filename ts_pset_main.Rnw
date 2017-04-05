@@ -39,7 +39,7 @@
 \newcommand{\hs}{\hat{\sigma}}
 \newcommand{\he}{\hat{\e}}
 \newcommand{\hy}{\hat{y}}
-
+\newcommand{\cN}{\mathcal{N}}
 
 
 
