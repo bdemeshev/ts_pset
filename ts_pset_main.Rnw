@@ -35,6 +35,7 @@
 \newcommand{\Corr}{\mathbb{C}\mathrm{orr}}
 \newcommand{\Var}{\mathbb{V}\mathrm{ar}}
 \newcommand{\cF}{\mathcal{F}}
+\newcommand{\cH}{\mathcal{H}}
 \newcommand{\hb}{\hat{\beta}}
 \newcommand{\hs}{\hat{\sigma}}
 \newcommand{\he}{\hat{\e}}
