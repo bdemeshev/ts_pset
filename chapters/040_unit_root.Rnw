@@ -20,13 +20,9 @@
 
 \begin{sol}
 
-<<echo=FALSE,include=FALSE>>=
-library("fUnitRoots") # critical values for adf test
-@
-
 \begin{enumerate}
 \item $H_0$: ряд содержит единичный корень, $\beta=0$; $H_a$: ряд не содержит единичного корня, $\beta<0$
-\item $ADF=-0.4/0.1=-4$, $ADF_{crit}=\Sexpr{qadf(0.05,N=100,trend="c",statistic="t")}$, $H_0$ отвергается
+\item $ADF=-0.4/0.1=-4$, $ADF_{crit}=-2.89$, $H_0$ отвергается
 \item Ряд стационарен
 \item При верной $H_0$ ряд не стационарен, и  $t$-статистика имеет не $t$-распределение, а распределение Дики-Фуллера.
 \end{enumerate}

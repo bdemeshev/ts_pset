@@ -33,6 +33,7 @@
 \newcommand{\E}{\mathbb{E}}
 \newcommand{\Cov}{\mathbb{C}\mathrm{ov}}
 \newcommand{\Corr}{\mathbb{C}\mathrm{orr}}
+\newcommand{\pCorr}{\mathrm{p}\mathbb{C}\mathrm{orr}}
 \newcommand{\Var}{\mathbb{V}\mathrm{ar}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cH}{\mathcal{H}}
