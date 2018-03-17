@@ -151,7 +151,11 @@ ARMA(2,3), ARIMA(2,0,3)
 \begin{problem}
 На графике представлены данные по уровню озера Гур\'{о}н в футах в 1875-1972 годах:
 
-<<include=FALSE>>=
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               frame=lines,
+               framesep=2mm]{r}
 level <- LakeHuron
 df <- data.frame(level, obs = 1875:1972)
 n <- nrow(df) # used later for answers
@@ -163,16 +167,20 @@ acfs.df <- data.frame(lag = c(1:15, 1:15),
 model <- arima(level, order = c(1, 0, 1))
 resids <- model$residuals
 resid.acf <- acf(resids, plot = FALSE)$acf
-@
+\end{minted}
 
 
 
-<<"huron_ts", warning=FALSE, message=FALSE, eval=FALSE>>=
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               frame=lines,
+               framesep=2mm]{r}
 tikz("../R_plots/huron_ts.tikz", standAlone = FALSE, bareBones = TRUE)
 ggplot(df, aes(x = obs, y = level)) + geom_line() +
     labs(x = "Год", y = "Уровень озера (футы)")
 dev.off()
-@
+\end{minted}
 
 
 %\begin{minipage}{\textwidth}
@@ -186,14 +194,18 @@ dev.off()
 
 График автокорреляционной и частной автокорреляционной функций:
 
-<<"huron_acf", warning=FALSE, eval=FALSE>>=
+\begin{minted}[mathescape,
+               linenos,
+               numbersep=5pt,
+               frame=lines,
+               framesep=2mm]{r}
 ggplot(acfs.df, aes(x = lag, y = acf, fill = acf.type))+
     geom_histogram(position = "dodge", stat = "identity")+
   xlab("Лаг") + ylab("Корреляция") +
   guides(fill = guide_legend(title = NULL))+
   geom_hline(yintercept = 1.96 / sqrt(nrow(df)))+
   geom_hline(yintercept = -1.96 / sqrt(nrow(df)))
-@
+\end{minted}
 
 
 \begin{enumerate}
