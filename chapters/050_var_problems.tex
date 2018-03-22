@@ -114,6 +114,47 @@ $y_t$ и $s_t$; $z_t$ и $w_t$.
 \end{sol}
 \end{problem}
 
+\begin{problem}
+  Процессы $u_t$ и $\e_t$ — независимые белые шумы с дисперсиями $\sigma^2_u$ и $\sigma^2_{\e}$. Рассмотрим процессы
+  \[
+    y_t = \begin{cases} 
+      y_{t-1} + \e_t, \text{ при } t>0, \\
+      0, \text{ при } t = 0;
+    \end{cases}
+  \]
+  \[
+    z_t = 
+\begin{cases} 
+  z_{t-1} + \e_t + 0.5\e_{t-1}, \text{ при } t>0, \\
+      0, \text{ при } t = 0;
+    \end{cases}
+  \]
+  
+  \[
+    w_t = 
+\begin{cases} 
+  0.5w_{t-1} + y_{t-1} + u_t, \text{ при } t>0, \\
+      0, \text{ при } t = 0;
+    \end{cases}
+  \]
 
+  \[
+    r_t = 
+\begin{cases} 
+      -2y_t + 0.5r_{t-1} + y_{t-1} + u_t, \text{ при } t>0, \\
+      0, \text{ при } t = 0;
+    \end{cases}
+  \]
+
+  \begin{enumerate}
+    \item Найдите порядок интеграции каждого процесса;
+    \item Какие пары процессов являются коинтегрированными? Найдите коинтеграционные соотношения для коинтегрированных пар.
+  \end{enumerate}
+
+\begin{sol}
+Процессы $y_t$ и $z_t$ коинтегрированы, $z_t - 1.5y_t$ стационарен.
+Процессы $y_t$ и $r_t$ коинтегрированы, $r_t + 2y_t$ стационарен.
+\end{sol}
+\end{problem}
 
 \Closesolutionfile{solution_file}

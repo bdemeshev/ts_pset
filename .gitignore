@@ -50,3 +50,5 @@ chapters/ts_pset_main-tikzDictionary
 R_plots/*.*
 ts_pset_main.xdv
 _minted-ts_pset_main/
+ts_pset_main.fdb_latexmk
+*.pyg
