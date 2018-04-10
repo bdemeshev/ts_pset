@@ -22,7 +22,6 @@ $(file_name).pdf: $(file_name).tex chapters/*.tex
 clean:
 	# with minus before rm make will ignore errors if file does not exist
 	-rm $(file_name)-tikzDictionary
-	-rm $(file_name).tex
 	-rm $(file_name).pdf
 	-rm $(file_name).aux
 	-rm $(file_name).idx
