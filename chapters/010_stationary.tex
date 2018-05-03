@@ -897,16 +897,17 @@ $\E(y_t)=\frac{2}{0.48}\approx 4.17$
 
 Прямое преобразование Фурье формулой\footnote{Иногда множитель $1/N$ относят к обратному преобразованию Фурье, иногда поровну разносят как $1/\sqrt{N}$.}:
 \[
-X_k = \frac{1}{N} \sum_{n=0}^{N-1} x_n \exp\left(\frac{-2i\pi}{N} kn \right)
+  X_k = \frac{1}{N} \sum_{n=0}^{N-1} x_n w^{kn}, 
 \]
-
+где комплексное число $w$ кодирует поворот на $1/N$ часть круга по часовой стрелке, $w = \exp\left(\frac{-2i\pi}{N} \right)$.
 
 
 
 Обратное преобразование Фурье
 \[
-x_n = \sum_{k=0}^{N-1} X_k \exp\left(\frac{2i\pi}{N} nk \right)
+  x_n = \sum_{k=0}^{N-1} X_k (w^{*})^{nk}, 
 \]
+где комплексное число $w^{*}$ является сопряжённым к числу $w$.
 
 
 \begin{problem}
@@ -951,10 +952,29 @@ x_n = \sum_{k=0}^{N-1} X_k \exp\left(\frac{2i\pi}{N} nk \right)
 
 
 \begin{problem}
-Найдите прямое преобразование Фурье последовательности $1$, $4$, $1$, $4$, $1$, $4$.
+Найдите прямое преобразование Фурье последовательностей
+\begin{enumerate}
+  \item $1$, $4$, $1$, $4$, $1$, $4$;
+  \item $1$, $9$;
+  \item $8$;
+  \item $1$, $0$, $0$, $0$;
+\end{enumerate}
   \begin{sol}
   \end{sol}
 \end{problem}
+
+\begin{problem}
+  Прямое преобразование Фурье можно записать в матричном виде $X = \frac{1}{N}Fx$. 
+  \begin{enumerate}
+    \item Как устроена матрица $F$?
+    \item Как устроена матрица $F^{-1}$?
+    \item Как записывается обратное преобразование Фурье в матричном виде?
+  \end{enumerate}
+
+  \begin{sol}
+  \end{sol}
+\end{problem}
+
 
 
 \begin{problem}
@@ -995,6 +1015,9 @@ x_n = \sum_{k=0}^{N-1} X_k \exp\left(\frac{2i\pi}{N} nk \right)
    Другие ряды добавить нельзя — будет строгая мультиколлинеарность.
  \end{sol}
  \end{problem}
+
+
+
 
 
 \Closesolutionfile{solution_file}
