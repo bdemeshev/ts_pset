@@ -1,0 +1,11 @@
+---
+title: "Задачник по временным рядам"
+author: "Дмитрий Борзых, Борис Демешев"
+output: html_document
+lang: ru-RU
+---
+
+
+[Здесь будет](https://github.com/bdemeshev/ts_pset/raw/master/ts_pset_main.pdf) город-сад! :)
+
+
