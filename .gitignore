@@ -1,10 +1,9 @@
-ts_ps_main.synctex.gz
-ts_2_pset-concordance.tex
 exsheets-listings.sty
-exsheets_configurations.cfg
 exsheets.sty
-ts_2_pset.synctex.gz
 
+*.synctex.gz
+*-concordance.tex
+*.cfg
 *.idx
 *.log
 *.out
@@ -13,9 +12,9 @@ ts_2_pset.synctex.gz
 *.pyg
 *.aux
 *.toc
+*.fdb_latexmk
 
-solutions/*.*
+solutions/*.tex
 chapters/ts_pset_main-tikzDictionary
 R_plots/*.*
 _minted-ts_pset_main/
-ts_pset_main.fdb_latexmk
