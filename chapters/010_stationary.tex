@@ -827,6 +827,27 @@ $\E(y_t)=\frac{2}{0.48}\approx 4.17$
      \item Постройте 95\%-ый предиктивный интервал для $y_{4}$ и $y_{5}$.
   \end{enumerate}
 \begin{sol}
+  \[
+    \hat y_{4|3} = l_3 
+  \]
+  \[
+    y_4 - \hat y_{4|3} = l_3 + \varepsilon_4 - l_3 = \varepsilon_4  
+  \]
+  \[
+  \Var(y_4 - \hat y_{4|3} \mid \mathcal{F}_3) = \Var(\varepsilon_4 \mid \mathcal{F}_3) = \Var(\varepsilon_4)  
+  \]
+  \[
+  \hat y_{5|3} = l_3 
+  \]
+  \begin{multline}
+  y_5 - \hat y_{5|3} = l_4  + \varepsilon_5 - l_3  = (l_3 + \alpha \varepsilon_4)  + 
+   \varepsilon_5 - l_3 = \\
+  = \varepsilon_5 + \alpha  \varepsilon_4 
+  \end{multline}
+  \[
+  \Var(y_5 - \hat y_{5|3} \mid \mathcal{F}_3) = \Var(\varepsilon_5 + \alpha  \varepsilon_4 )  
+  \]
+    
 \end{sol}
 \end{problem}
 
