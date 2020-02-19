@@ -4,6 +4,9 @@ exsheets.sty
 *.synctex.gz
 *-concordance.tex
 *.cfg
+*.fls
+*.ind
+*.ilg
 *.idx
 *.log
 *.out
