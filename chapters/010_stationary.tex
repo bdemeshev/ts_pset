@@ -835,7 +835,28 @@ $\E(y_t)=\frac{2}{0.48}\approx 4.17$
 \end{problem}
 
 
+\begin{problem}
 
+  Процессы $y_t$ и $u_t$ стационарны и заданы системой уравнений
+  \[
+  \begin{cases}
+    y_t = \beta y_{t-1} + u_t \\
+    u_t = \alpha u_{t-1} + \nu_t, \\
+  \end{cases}  
+  \]
+  где $(\nu_t)$ — белый шум. Коэффициенты $\beta$ и $\alpha$ по модулю меньше единицы.
+
+  Исследовательница Ада оценивает обычную регрессию $\hat y_t = \hat \beta_1 + \hat \beta_2 y_{t-1}$ с помощью МНК.
+
+  Какие оценки она получит при большом размере выборки?
+  
+  \begin{sol}
+    \[
+    \plim \hat \beta_2 = \frac{\beta + \alpha}{1 + \beta \alpha}  
+    \]
+  \end{sol}
+
+\end{problem}
 
 
 

@@ -1,5 +1,13 @@
 \documentclass[11pt]{book}
 
+
+% this magick is to solve problem that appeared after update of texlive 2018 to texlive 2020
+% https://tex.stackexchange.com/questions/511341/the-error-occurred-after-the-last-update
+\makeatletter
+\def\nobreak{\penalty\@M}
+\makeatother
+ 
+
 %%%%% russian xetex
 \usepackage{fontspec}
 \usepackage{polyglossia}
@@ -32,11 +40,6 @@
 \usepackage{answers} % дележка ответов и вопросов
 
 \newcommand{\e}{\varepsilon}
-\newcommand{\E}{\mathbb{E}}
-\newcommand{\Cov}{\mathbb{C}\mathrm{ov}}
-\newcommand{\Corr}{\mathbb{C}\mathrm{orr}}
-\newcommand{\pCorr}{\mathrm{p}\mathbb{C}\mathrm{orr}}
-\newcommand{\Var}{\mathbb{V}\mathrm{ar}}
 \newcommand{\cF}{\mathcal{F}}
 \newcommand{\cH}{\mathcal{H}}
 \newcommand{\hb}{\hat{\beta}}
@@ -45,6 +48,12 @@
 \newcommand{\hy}{\hat{y}}
 \newcommand{\cN}{\mathcal{N}}
 
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\Cov}{\mathbb{C}\mathrm{ov}}
+\DeclareMathOperator{\Corr}{\mathbb{C}\mathrm{orr}}
+\DeclareMathOperator{\pCorr}{\mathrm{p}\mathbb{C}\mathrm{orr}}
+\DeclareMathOperator{\Var}{\mathbb{V}\mathrm{ar}}
+\DeclareMathOperator{\plim}{plim}
 
 
 
