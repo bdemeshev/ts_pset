@@ -1,0 +1,150 @@
+\protect \hypertarget {soln:1.1}{}
+\begin{solution}{{1.1}}
+В данном случае статистика $DW$ не применима, так как есть лаг $y_{t-1}$ среди регрессоров.
+\end{solution}
+\protect \hypertarget {soln:1.2}{}
+\begin{solution}{{1.2}}
+\begin{enumerate}
+\item $\E(\e_t)=0$, $\Var(\e_1)=\sigma^2$, $\Var(\e_t)=2\sigma^2$ при $t\geq 2$.  Гетероскедастичная.
+\item $\Cov(e_t,e_{t+1})=\sigma^2$. Автокоррелированная.
+\item $\hb$ --- несмещенная, неэффективная
+\item Более эффективной будет $\hb_{gls}=(X'V^{-1}X)^{-1}X'V^{-1}y$, где
+\[
+X=\begin{pmatrix}
+x_1 \\
+x_2 \\
+\vdots \\
+x_n
+\end{pmatrix}
+\]
+
+Матрица $V$ известна с точностью до константы $\sigma^2$, но в формуле для $\hb_{gls}$ неизвестная $\sigma^2$ сократится.
+
+Другой способ построить эффективную оценку --- применить МНК к преобразованным наблюдениям, т.е. $\hb_{gls}=\frac{\sum x'_i y'_i}{\sum x_i^{\prime 2}}$, где $y'_1=y_1$, $x'_1=x_1$, $y'_t=y_t-y_{t-1}$, $x'_t=x_t-x_{t-1}$ при $t\geq 2$.
+\end{enumerate}
+\end{solution}
+\protect \hypertarget {soln:1.3}{}
+\begin{solution}{{1.3}}
+
+Для простоты закроем глаза на малое количество наблюдений и как индейцы пираха будем считать, что пять --- это много.
+
+\end{solution}
+\protect \hypertarget {soln:1.4}{}
+\begin{solution}{{1.4}}
+1. Поскольку имеют место соотношения $\varepsilon_1 = \rho \varepsilon_0 + u_1$ и $Y_1 =\mu + \varepsilon_1$, то из условия задачи получаем, что $\varepsilon_1 \sim N(0,\sigma^2 / (1 - \rho^2))$
+и $Y_1 \sim N(\mu,\sigma^2 / (1 - \rho^2))$. Поэтому
+\[
+f_{Y_1}(y_1) = \frac{1}{\sqrt{2\pi\sigma^2/(1-\rho^2)}}\exp{\left(-\frac{(y_1 - \mu)^2}{2\sigma^2/(1 - \rho^2)}\right)}.
+\]
+
+Далее, найдем $f_{Y_2|Y_1}(y_2|y_1)$. Учитывая, что $Y_2 = \rho Y_1 + (1- \rho) \mu + u_2$, получаем $Y_2|\{Y_1 = y_1\} \sim N(\rho y_1 + (1- \rho) \mu, \sigma^2)$. Значит,
+\[
+f_{Y_2|Y_1}(y_2|y_1) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\left(-\frac{(y_2 - \rho y_1 - (1- \rho) \mu)^2}{2\sigma^2}\right)}.
+\]
+
+Действуя аналогично, получаем, что для всех $t \geq 2$ справедлива формула
+\[
+f_{Y_{t}|Y_{t-1}}(y_{t}|y_{t-1}) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\left(-\frac{(y_{t} - \rho y_{t-1} - (1- \rho) \mu)^2}{2\sigma^2}\right)}.
+\]
+
+Таким образом, находим функцию правдоподобия
+\[
+\mathrm{L}(\mu, \rho, \sigma^2) = f_{Y_T,\ldots,Y_1}(y_T,\dots,y_1) = f_{Y_1}(y_1)\prod_{t=2}^{T}f_{Y_t|Y_{t-1}}(y_t|y_{t-1}) \text{,}
+\]
+где $f_{Y_1}(y_1)$ и $f_{Y_t|Y_{t-1}}(y_t|y_{t-1})$ получены выше.
+
+2. Для нахождения неизвестных параметров модели запишем логарифмическую условную функцию правдоподобия:
+\[
+l(\mu, \rho, \sigma^2|Y_1 = y_1) = \sum_{t=2}^{T}\log{f_{Y_t|Y_{t-1}}(y_t|y_{t-1})} =
+\]
+\[
+=-\frac{T-1}{2} \log(2 \pi) - \frac{T-1}{2} \log{\sigma^2} - \frac{1}{2\sigma^2} \sum_{t=2}^{T}(y_t - \rho y_{t-1} - (1 - \rho) \mu)^2 \text{.}
+\]
+
+Найдем производные функции $l(\mu, \rho, \sigma^2|Y_1 = y_1)$ по неизвестным параметрам:
+\[
+\frac{\partial l}{\partial \mu} = -\frac{1}{2\sigma^2} \sum_{t=2}^{T} 2(y_t - \rho y_{t-1} - (1 - \rho) \mu) \cdot (\rho - 1) \text{,}
+\]
+\[
+\frac{\partial l}{\partial \rho} = -\frac{1}{2\sigma^2} \sum_{t=2}^{T} 2(y_t - \rho y_{t-1} - (1 - \rho) \mu) \cdot (\mu - y_{t-1}) \text{,}
+\]
+\[
+\frac{\partial l}{\partial {\sigma^2}} =  - \frac{T-1}{2\sigma^2} + \frac{1}{2\sigma^4} \sum_{t=2}^{T}(y_t - \rho y_{t-1} - (1 - \rho) \mu)^2 \text{.}
+\]
+
+Оценки неизвестных параметров модели могут быть получены как решение следующей системы уравнений:
+\[
+\left\{
+  \begin{aligned}
+    \frac{\partial l}{\partial \mu} = 0 \text{,} \\
+    \frac{\partial l}{\partial \rho} = 0 \text{,} \\
+    \frac{\partial l}{\partial {\sigma^2}} = 0 \text{.}
+  \end{aligned}
+\right.
+\]
+
+Из первого уравнения системы получаем, что
+\[
+\sum_{t=2}^{T}y_{t} - \hat{\rho} \sum_{t=2}^{T}y_{t-1} = (T - 1) (1- \hat{\rho}) \hat{\mu} \text{,}
+\]
+откуда
+\[
+\hat{\mu} = \frac{\sum_{t=2}^{T}y_{t} - \hat{\rho} \sum_{t=2}^{T}y_{t-1}}{(T - 1) (1- \hat{\rho})} = \frac{3 - \hat{\rho} \cdot 3}{4\cdot(1-\hat{\rho})} = \frac{3}{4} \text{.}
+\]
+
+Далее, если второе уравнение системы переписать в виде
+\[
+\sum_{t=2}^{T}(y_t - \hat{\mu} - \hat{\rho} (y_{t-1} - \hat{\mu}))(y_{t-1} - \hat{\mu}) = 0 \text{,}
+\]
+то легко видеть, что
+\[
+\hat{\rho} = \frac{\sum_{t=2}^{T}(y_t - \hat{\mu})(y_{t-1} - \hat{\mu})}{\sum_{t=2}^{T}(y_{t-1} - \hat{\mu})^2} \text{.}
+\]
+Следовательно, $\hat{\rho} =-1/11= -0.0909$.
+
+Наконец, из третьего уравнения системы
+\[
+\hs^2 =\frac{1}{T-1} \sum_{t=2}^{T}(y_t - \hat{\rho} y_{t-1} - (1 - \hat{\rho}) \hat{\mu})^2 \text{.}
+\]
+Значит, $\hs^2 = 165/242= 0.6818$. Ответы: $\hat{\mu} = 3/4= 0.75$, $\hat{\rho} = -1/11=-0.0909$, $\hs^2 =165/242=0.6818$.
+\end{solution}
+\protect \hypertarget {soln:1.5}{}
+\begin{solution}{{1.5}}
+Несмещёнными остаются. Состоятельными не всегда остаются, например, состоятельность исчезает, если все случайные ошибки тождественно равны между собой.
+
+\end{solution}
+\protect \hypertarget {soln:1.6}{}
+\begin{solution}{{1.6}}
+\end{solution}
+\protect \hypertarget {soln:1.7}{}
+\begin{solution}{{1.7}}
+\end{solution}
+\protect \hypertarget {soln:1.8}{}
+\begin{solution}{{1.8}}
+\end{solution}
+\protect \hypertarget {soln:1.9}{}
+\begin{solution}{{1.9}}
+\begin{enumerate}
+\item $\E(\e_t)=0$, $\Var(\e_t)=\sigma^2/(1-\rho^2)$
+\item $\Cov(\e_t,\e_{t+h})=\rho^h\cdot \sigma^2/(1-\rho^2)$
+\item $\Corr(\e_t,\e_{t+h})=\rho^h$
+\end{enumerate}
+\end{solution}
+\protect \hypertarget {soln:1.10}{}
+\begin{solution}{{1.10}}
+\end{solution}
+\protect \hypertarget {soln:1.11}{}
+\begin{solution}{{1.11}}
+\end{solution}
+\protect \hypertarget {soln:1.12}{}
+\begin{solution}{{1.12}}
+\end{solution}
+\protect \hypertarget {soln:1.13}{}
+\begin{solution}{{1.13}}
+\end{solution}
+\protect \hypertarget {soln:1.14}{}
+\begin{solution}{{1.14}}
+\end{solution}
+\protect \hypertarget {soln:1.15}{}
+\begin{solution}{{1.15}}
+\end{solution}

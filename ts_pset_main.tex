@@ -146,39 +146,21 @@
 \begin{document}
 \maketitle
 
+\tableofcontents
 
 
-\chapter*{Предисловие}
-
-План:
-
-0. Автокорреляция в ошибках линейной модели
-
-1. Стационарные/нестационарные процессы, ARMA
-сюда оператор лага, ACF/PACF
-
-2. Экспоненциальное сглаживание и тета метод
-
-3. ГАРЧ
-
-4. Единичный корень (до ВАР) (ADF)
-
-5. VAR/VECM/коинтеграция
-
-6. Midas
-
-7. Байесовские ВАР
-
-8. Модели состояние-наблюдение/фильтр Калмана/TVP
-
-
-
+\Opensolutionfile{solution_file}[solutions_all]
 
 \input{chapters/005_correlated_e.tex}
 
 
 \input{chapters/010_stationary.tex}
 
+\input{chapters/015_arima.tex}
+
+\input{chapters/020_ets.tex}
+
+\input{chapters/025_fourier.tex}
 
 \input{chapters/030_garch_problems.tex}
 
@@ -189,6 +171,9 @@
 
 
 \input{chapters/080_state_space.tex}
+
+\Closesolutionfile{solution_file}
+
 
 \chapter{Решения и ответы к избранным задачам}
 \chaptermark{Избранные решения}
@@ -206,12 +191,7 @@
 
 
 
-\input{solutions/sols_005}
-\input{solutions/sols_010}
-\input{solutions/sols_030}
-\input{solutions/sols_040}
-\input{solutions/sols_050}
-\input{solutions/sols_080}
+\input{solutions_all}
 
 
 % в биб-файл

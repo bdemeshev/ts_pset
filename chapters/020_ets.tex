@@ -1,0 +1,156 @@
+\chapter{ETS}
+
+
+\begin{problem}
+  Рассмотрим ETS-ANN модель с $\alpha = 1/2$, $y_1=6$, $y_2=9$, $y_3 = 6$, $\sigma^2=9$.
+
+
+  \begin{enumerate}
+    \item Найдите величину $l_0$, которая минимизирует $RSS$;
+    \item Постройте точечный прогноз $\hat y_{4|2}$, $\hat y_{5|2}$;
+     \item Постройте 95\%-ый предиктивный интервал для $y_{4}$ и $y_{5}$.
+  \end{enumerate}
+\begin{sol}
+  \[
+    \hat y_{4|3} = l_3 
+  \]
+  \[
+    y_4 - \hat y_{4|3} = l_3 + \varepsilon_4 - l_3 = \varepsilon_4  
+  \]
+  \[
+  \Var(y_4 - \hat y_{4|3} \mid \mathcal{F}_3) = \Var(\varepsilon_4 \mid \mathcal{F}_3) = \Var(\varepsilon_4)  
+  \]
+  \[
+  \hat y_{5|3} = l_3 
+  \]
+  \begin{multline}
+  y_5 - \hat y_{5|3} = l_4  + \varepsilon_5 - l_3  = (l_3 + \alpha \varepsilon_4)  + 
+   \varepsilon_5 - l_3 = \\
+  = \varepsilon_5 + \alpha  \varepsilon_4 
+  \end{multline}
+  \[
+  \Var(y_5 - \hat y_{5|3} \mid \mathcal{F}_3) = \Var(\varepsilon_5 + \alpha  \varepsilon_4 )  
+  \]
+    
+\end{sol}
+\end{problem}
+
+\begin{problem}
+  Рассмотрим ETS-AAN модель с $\alpha = 1/2$, $\beta=3/4$, $l_{0}=7$, $b_0=2$, $y_1=6$, $y_2=9$, $y_3=3$, $\sigma^2=9$.
+  \begin{enumerate}
+    \item Постройте точечный прогноз $\hat y_{4|3}$, $\hat y_{5|3}$;
+    \item Постройте 95\%-ый предиктивный интервал для $y_{4}$ и $y_{5}$.
+  \end{enumerate}
+\begin{sol}
+\[
+\hat y_{4|3} = l_3 + b_3
+\]
+\[
+y_4 - \hat y_{4|3} = l_3 + b_3 + \varepsilon_4 - (l_3 + b_3) = \varepsilon_4  
+\]
+\[
+\Var(y_4 - \hat y_{4|3} \mid \mathcal{F}_3) = \Var(\varepsilon_4 \mid \mathcal{F}_3) = \Var(\varepsilon_4)  
+\]
+\[
+\hat y_{5|3} = l_3 + 2b_3
+\]
+\begin{multline}
+y_5 - \hat y_{5|3} = l_4 + b_4 + \varepsilon_5 - (l_3 + 2b_3) = (l_3 + b_3 + \alpha \varepsilon_4)  + 
+(b_3 + \beta \varepsilon_4) + \varepsilon_5 - (l_3 + 2b_3) = \\
+= \varepsilon_5 + (\alpha + \beta) \varepsilon_4 
+\end{multline}
+\[
+\Var(y_5 - \hat y_{5|3} \mid \mathcal{F}_3) = \Var(\varepsilon_5 + (\alpha + \beta) \varepsilon_4 )  
+\]
+\end{sol}
+\end{problem}
+
+\begin{problem}
+  Рассмотрим ETS-AAN модель с $\alpha = 1/2$, $\beta=3/4$, $l_{0}=7$, $y_1=6$, $y_2=9$, $\sigma^2=16$.
+
+
+  \begin{enumerate}
+    \item Найдите величину $b_0$, которая минимизирует $RSS$;
+    \item Постройте точечный прогноз $\hat y_{3|2}$, $\hat y_{4|2}$;
+     \item Постройте 95\%-ый предиктивный интервал для $y_{3}$ и $y_{4}$.
+  \end{enumerate}
+\begin{sol}
+\end{sol}
+\end{problem}
+
+\begin{problem}
+  Рассмотрим ETS-AAN модель с $\alpha = 1/2$, $\beta=3/4$, $l_{0}=7$, $y_1=6$, $y_2=9$, $y_3=3$.
+
+  Выпишите сумму квадратов ошибок прогнозов на один шаг вперёд через $b_0$.
+  % минимизация тут длинная
+\begin{sol}
+\end{sol}
+\end{problem}
+
+
+
+\begin{problem}
+  Рассмотрим ETS-AAN модель с $\alpha = 1/2$, $\beta=3/4$, $l_{99}=8$, $b_{99}=1$, $y_{99}=10$, $y_{100}=8$, $\sigma^2=16$.
+  \begin{enumerate}
+    \item Найдите $l_{100}$, $b_{100}$, $l_{98}$, $b_{98}$;
+    \item Постройте точечный прогноз $\hat y_{101|100}$, $\hat y_{102|100}$;
+    \item Постройте 95\%-ый предиктивный интервал для $y_{101}$ и $y_{102}$.
+  \end{enumerate}
+\begin{sol}
+\end{sol}
+\end{problem}
+
+
+\begin{problem}
+Для каждой из ETS моделей найдите эквивалентную модель класса ARIMA:
+	\begin{enumerate}
+		\item Простое экспоненциальное сглаживание, ETS-ANN;
+		\item Аддитивное сглаживание Хольта, ETS-AAN;
+		\item Аддитивное сглаживание Хольта с угасающим трендом, ETS-AAdN;
+		\item Аддитивное сглаживание Хольта-Винтерса для месячных данных, ETS-AAA;
+		\item Аддитивное сглаживание Хольта-Винтерса с угасающим трендом для месячных данных, ETS-AAdA;
+		\item ETS-ANA;
+	\end{enumerate}
+\begin{sol}
+	\begin{enumerate}
+		\item Простое экспоненциальное сглаживание, ETS-ANN; ARIMA(0,1,1)
+		\item Аддитивное сглаживание Хольта, ETS-AAN; ARIMA(0,2,2)
+		\item Аддитивное сглаживание Хольта с угасающим трендом, ETS-AAdN; ARIMA(1,1,2)
+		\item Аддитивное сглаживание Хольта-Винтерса для месячных данных, ETS-AAA; ARIMA(0,1,13)-SARIMA(0,1,0)
+		\item Аддитивное сглаживание Хольта-Винтерса с угасающим трендом для месячных данных, ETS-AAdA; ARIMA(0,1,13)-SARIMA(0,1,0)
+		\item ETS-ANA; ARIMA(0,1,12)-SARIMA(0,1,0)
+	\end{enumerate}
+\end{sol}
+\end{problem}
+
+
+\begin{problem}
+  Рассмотрим ETS-AAN модель. По каким параметрам модели оптимальные точки можно получить в явном виде?
+
+
+\begin{sol}
+По $l_0$, $b_0$;
+\end{sol}
+\end{problem}
+
+
+
+
+
+
+
+
+\chapter{TBATS}
+Относим к ETS как модель с одной ошибкой в разных уравнениях. 
+
+\begin{problem}
+  Найдите предел
+  \[
+    \lim_{w \to 0} \frac{y^w - 1}{w}
+  \]
+\begin{sol}
+  $\ln y$
+\end{sol}
+\end{problem}
+
+
