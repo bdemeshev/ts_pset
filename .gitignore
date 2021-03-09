@@ -7,6 +7,8 @@ exsheets.sty
 *.bbl
 *.run.xml
 *.fls
+*.bcf
+*.blg
 *.ind
 *.ilg
 *.idx
