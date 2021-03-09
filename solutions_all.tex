@@ -148,3 +148,560 @@ l(\mu, \rho, \sigma^2|Y_1 = y_1) = \sum_{t=2}^{T}\log{f_{Y_t|Y_{t-1}}(y_t|y_{t-1
 \protect \hypertarget {soln:1.15}{}
 \begin{solution}{{1.15}}
 \end{solution}
+\protect \hypertarget {soln:2.1}{}
+\begin{solution}{{2.1}}
+\[
+(1 - 0.4L)y_t = 4 + (1 + 0.3L)\e_t
+\]
+\end{solution}
+\protect \hypertarget {soln:2.2}{}
+\begin{solution}{{2.2}}
+$x_{t}=(1-L)^{t}y_{t}$
+\end{solution}
+\protect \hypertarget {soln:2.3}{}
+\begin{solution}{{2.3}}
+$ F_{n}=L(1+L)F_{n} $, значит $ F_{n}=L^{k}(1+L)^{k}F_{n} $ или $ F_{n+k}=(1+L)^{k}F_{n} $
+
+Ответ: $1$
+\end{solution}
+\protect \hypertarget {soln:2.4}{}
+\begin{solution}{{2.4}}
+а — неверно, б — верно, в — верно, г — нет.
+\end{solution}
+\protect \hypertarget {soln:2.5}{}
+\begin{solution}{{2.5}}
+а, б, в, г — стационарны
+\end{solution}
+\protect \hypertarget {soln:2.6}{}
+\begin{solution}{{2.6}}
+Они будут примерно одинаковы. Оценка наклона определяется автоковариационной функцией.
+\end{solution}
+\protect \hypertarget {soln:2.7}{}
+\begin{solution}{{2.7}}
+
+\end{solution}
+\protect \hypertarget {soln:2.8}{}
+\begin{solution}{{2.8}}
+
+\begin{enumerate}
+\item $y_t=1+\e_t+0.5\e_{t-1}+0.25\e_{t-2}$ — стационарный
+\item $y_t=-2y_{t-1}-3y_{t-2}+\e_t+\e_{t-1}$
+\item $y_t=-0.5y_{t-1} + \e_t$ — стационарный
+\item $y_t=1-1.5 y_{t-1} - 0.5 y_{t-2} + \e_t - 1.5\e_{t-1} - 0.5\e_{t-2}$
+\item $y_t=1+0.64y_{t-2}+\e_t+0.64\e_{t-1}$ — стационарный
+\item $y_t=1+t+\e_t$ — нестационарный
+\item $y_t=1+y_{t-1}+\e_t$ — нестационарный
+\end{enumerate}
+\end{solution}
+\protect \hypertarget {soln:2.9}{}
+\begin{solution}{{2.9}}
+Процесс стационарен только при $y_1=4+\frac{2}{\sqrt{3}}\e_1$. Фразу нужно понимать как «у стохастического разностного уравнения $y_t=2+0.5y_{t-1}+\e_t$ есть стационарное решение».
+\end{solution}
+\protect \hypertarget {soln:2.10}{}
+\begin{solution}{{2.10}}
+да, стационарный
+\end{solution}
+\protect \hypertarget {soln:2.11}{}
+\begin{solution}{{2.11}}
+да, получается
+\end{solution}
+\protect \hypertarget {soln:2.12}{}
+\begin{solution}{{2.12}}
+да, это белый шум. Величина $N$ распределена биномиально, $Bin(n=100,p=1/2)$, $\E(N)=50$.
+\end{solution}
+\protect \hypertarget {soln:2.13}{}
+\begin{solution}{{2.13}}
+
+\begin{enumerate}
+  \item $z_t = x_t (1-x_{t-1})y_t$;
+    Процесс $z_t$ — белый шум, $\E(z_t)=0$, $\Var(z_t)=6$. Величины $z_t$ зависимы. Например, если $z_t \neq 0$, то $z_{t+1}=z_{t-1}=0$. Величины $z_t$ одинаково распределены.
+\item $z_t = y_{t-1}y_t$;
+Процесс $z_t$ — белый шум. Величины $z_t$ зависимы. Величины $z_t$ одинаково распределены.
+\end{enumerate}
+
+
+\end{solution}
+\protect \hypertarget {soln:2.14}{}
+\begin{solution}{{2.14}}
+Проекции: $\tilde X_1 = X_1 + Z$; $\tilde X_2 = X_2 + Z$; $\E(X_i|Z)=1-Z$; $\Cov(X_i, Z)=-1/4$;
+
+Величина $Z$ имеет распределение Бернулли, поэтому $\E(Z)=1/2$ и $\Var(Z)=1/4$;
+
+\[
+  \pCorr(X_1, X_2; Z) = \frac{-1/2}{12.5} = -\frac{1}{\sqrt{50}}
+\]
+\[
+  \Corr(X_1, X_2|Z)=-Z/6
+\]
+  
+\end{solution}
+\protect \hypertarget {soln:2.15}{}
+\begin{solution}{{2.15}}
+\begin{enumerate}
+  \item $u_t \sim \cN(0;1)$ и независимы;
+  \item $u_t \sim \cN(0;1)$ и независимы при $t>1$, а при $t=1$ величина $u_t$ равновероятно
+  принимает значения $-1$ и $1$;
+  \item Величины $u_t$ независимы и одинаково распределены с бесконечным математическим ожиданием;
+  \item $u_t \sim \cN(t;1)$ и независимы.
+\end{enumerate}
+\end{solution}
+\protect \hypertarget {soln:3.1}{}
+\begin{solution}{{3.1}}
+
+\end{solution}
+\protect \hypertarget {soln:3.2}{}
+\begin{solution}{{3.2}}
+
+ARMA(2,3), ARIMA(2,0,3)
+\end{solution}
+\protect \hypertarget {soln:3.3}{}
+\begin{solution}{{3.3}}
+\begin{enumerate}
+\item Процесс $AR(2)$, т.к. две первые частные корреляции значимо отличаются от нуля, а гипотезы о том, что каждая последующая равна нулю не отвергаются.
+\item Можно использовать одну из двух статистик
+\[
+\text{Ljung-Box}=n(n+2)\sum_{k=1}^3\frac{\hat{\rho}_k^2}{n-k}=
+0.42886
+\]
+\[
+\text{Box-Pierce}=n\sum_{k=1}^3\hat{\rho}_k^2=
+0.4076
+\]
+Критическое значение хи-квадрат распределения с 3-мя степенями свободы для $\alpha=0.05$ равно $\chi^2_{3,crit}=7.81$.
+Вывод: гипотеза $H_0$ об отсутствии корреляции ошибок модели не отвергается.
+\end{enumerate}
+\end{solution}
+\protect \hypertarget {soln:3.4}{}
+\begin{solution}{{3.4}}
+
+\end{solution}
+\protect \hypertarget {soln:3.5}{}
+\begin{solution}{{3.5}}
+Среднее количество пересечений равно 50 помножить на вероятность того, что два соседних $y_t$ разного знака. Найдём вдвое меньшую вероятность, $\P(y_1>0, y_2 <0)$.
+\end{solution}
+\protect \hypertarget {soln:3.6}{}
+\begin{solution}{{3.6}}
+
+\[
+\E(b_t) = 3
+\]
+
+\[
+\Var(b_t) = t^2 \sigma^2_{\e}
+\]
+
+\[
+\Cov(b_t, b_{t-k}) = 0, k \geq 1
+\]
+
+\[
+\Corr(b_t, b_{t-k}) = 0, k \geq 1
+\]
+
+$b_t$ — нестационарный из-за дисперсии
+
+
+\[
+\E(c_t) = 2
+\]
+
+\[
+\Var(c_t) = \sigma^2_{\e}
+\]
+
+\[
+\Cov(c_t, c_{t-k}) = \cos( \pi k /2)\sigma^2_{\e}, k \geq 1
+\]
+
+\[
+\Corr(c_t, c_{t-k}) = \cos( \pi k /2), k \geq 1
+\]
+
+$c_t$ — стационарный
+\end{solution}
+\protect \hypertarget {soln:3.7}{}
+\begin{solution}{{3.7}}
+зачеркнуть одну цифру
+\end{solution}
+\protect \hypertarget {soln:3.8}{}
+\begin{solution}{{3.8}}
+\end{solution}
+\protect \hypertarget {soln:3.9}{}
+\begin{solution}{{3.9}}
+\end{solution}
+\protect \hypertarget {soln:3.10}{}
+\begin{solution}{{3.10}}
+По нулевым корреляциям догадываемся, что это процесс $MA(2)$.
+\[
+y_y = 4 + u_t + \alpha_1 u_{t-1} + \alpha_2 u_{t-2}
+\]
+\[
+\begin{cases}
+  \frac{\alpha_1 \alpha_2 + \alpha_1}{\alpha_2} = 7/3 \\
+  \frac{\alpha_1^2 + \alpha_2^2 + 1}{\alpha_2} = 10/3 \\
+\end{cases}
+\]
+
+
+\end{solution}
+\protect \hypertarget {soln:3.11}{}
+\begin{solution}{{3.11}}
+\end{solution}
+\protect \hypertarget {soln:3.12}{}
+\begin{solution}{{3.12}}
+  \begin{enumerate}
+    \item $ACF = (0.9, -0.9, 0, 0, 0, \ldots)$ не бывает, так как определитель корреляционной матрицы 3 на 3 отрицательный;
+    \item $PACF = (0.9, -0.9, 0, 0, 0, \ldots)$ — AR(2);
+    \item $PACF = (0.9, 0, 0, 0, 0, \ldots)$ — $y_t = 0.9y_{t-1} + u_t$;
+    \item $PACF = (0, 0.9, 0, 0, 0, 0, \ldots)$ — $y_t = 0.9y_{t-2} + u_t$;
+    \item $ACF = (0.9, 0, 0, 0, 0, \ldots)$ — не бывает, подозрение падает на MA(1), но решения только с комплексными коэффициентами, геометрически: два угла с косинусом 0.9, то есть примерно по 30 градусов, и они даже в сумме не могут дать перпендикуляр;
+    \item $ACF = (0, 0.9, 0, 0, 0, 0, \ldots)$ — не бывает, если проредить процесс через один, то должна получится невозможная ACF;
+  \end{enumerate}
+   В целом PACF может быть любая,
+   \url{http://projecteuclid.org/euclid.aos/1176342881}.
+\end{solution}
+\protect \hypertarget {soln:3.13}{}
+\begin{solution}{{3.13}}
+  $\phi_{kk}=0$ при $k \geq 3$.
+\end{solution}
+\protect \hypertarget {soln:3.14}{}
+\begin{solution}{{3.14}}
+Заметим, что $0.69\approx 0.71$, сокращаем множитель $1-0.7L$, получаем $y_t = 100/3 + \e_t$.
+\end{solution}
+\protect \hypertarget {soln:3.15}{}
+\begin{solution}{{3.15}}
+Стационарным решением является $y_t = \sum_{i=0}^{\infty} 0.5^i \e_{t-i}$. Решениями также являются: $y_t = 0.5^t + \sum_{i=0}^{\infty} 0.5^i \e_{t-i}$, $y_t = 0.5^t\e_{100} + \sum_{i=0}^{\infty} 0.5^i \e_{t-i}$, $y_t = 0.5^t + \sum_{i=0}^{t} 0.5^i \e_{t-i}$, $y_t = \sum_{i=0}^{t} 0.5^i \e_{t-i}$.
+\end{solution}
+\protect \hypertarget {soln:3.16}{}
+\begin{solution}{{3.16}}
+
+$\E_t(y_{t+1})=2+0.6y_{t-1}-0.08y_{t-2}$, $\Var_t(y_{t+1})=4$
+
+$\E_t(y_{t+2})=3.2 + 0.28 y_t- 0.048y_{t-1}$, $\Var_t(y_{t+2})=1.36 \cdot 4$
+
+$\E_{100}(y_{102})= 4.388$, $\Var_{100}(y_{102})=5.44$.
+
+Предиктивный интервал $[4.388 - 1.96 \sqrt{5.44};4.388 + 1.96 \sqrt{5.44}]$
+
+$\E(y_t)=\frac{2}{0.48}\approx 4.17$
+
+\end{solution}
+\protect \hypertarget {soln:3.17}{}
+\begin{solution}{{3.17}}
+Заметим, что $\Var(u_t|\cF_t)=0$. Более того, для обратимого процесса $\Var(u_t|y_t, y_{t-1}, \ldots, y_1) \approx \Var(u_t|y_t, y_{t-1}, \ldots) = 0$.
+\[
+\E(y_{101}|y_{100})=7 + 0 + 0.2\E(u_{100}|y_{100})
+\]
+\[
+\E(u_{100}|y_{100}) = \beta_1 + \beta_2 y_{100}
+\]
+\[
+\beta_2 = \frac{\Cov(y_{100}, u_{100})}{\Var(y_{100})}=4/4.16, \beta_1 = \E(u_{100}) - \beta_2 \E(y_{100})=-4\cdot 7/4.16
+\]
+\[
+\frac{y_t}{1+0.2L} = \frac{7}{1+0.2L} + u_t
+\]
+Заметим, что $\frac{7}{1+0.2L}=7/1.2$, так как $L\cdot 7 = 7$ (вчера семь равнялось семи).
+
+По условию $\frac{y_{100}}{1+0.2L} \approx 5.6$. Знак «примерно равно» возникает из-за замены бесконечной суммы на конечную.
+
+\end{solution}
+\protect \hypertarget {soln:3.18}{}
+\begin{solution}{{3.18}}
+    $\E(y_1)=0$, $\Var(y_1)=\sigma^2_u/(1-\beta^2)$, $\E(y_t|y_{t-1})=\beta y_{t-1}$, $\Var(y_t|y_{t-1})=\sigma^2_u$.
+
+    При максимизации условного правдоподобия получаем:
+    \[
+         \hb = \frac{y_1 y_2 + y_2 y_3}{y_1^2 + y_2^2}
+    \]
+  
+\end{solution}
+\protect \hypertarget {soln:3.19}{}
+\begin{solution}{{3.19}}
+  
+\end{solution}
+\protect \hypertarget {soln:3.20}{}
+\begin{solution}{{3.20}}
+  
+\end{solution}
+\protect \hypertarget {soln:3.21}{}
+\begin{solution}{{3.21}}
+    \[
+    \plim \hat \beta_2 = \frac{\beta + \alpha}{1 + \beta \alpha}
+    \]
+  
+\end{solution}
+\protect \hypertarget {soln:3.22}{}
+\begin{solution}{{3.22}}
+Если обозначить отношение дисперсий буквой $R = \sigma^2_w/\sigma^2_u$,
+то равенство дисперсии и ковариации даёт систему уравнений:
+\[
+  \begin{cases}
+    \alpha R = 2 \\
+    (1+\alpha^2)R = 5 \\
+  \end{cases}
+\]
+Решений у неё два, старый процесс $(\alpha=2, R=1)$, и новый $(\alpha=0.5, R=4)$.
+Из равенства ожиданий следует, что $c=5$.
+  
+\end{solution}
+\protect \hypertarget {soln:3.23}{}
+\begin{solution}{{3.23}}
+    Берем любое $a_0$, а дальше в обе стороны заполняем числа по принципу $a_t = -0.5 a_{t-1}$.
+  
+\end{solution}
+\protect \hypertarget {soln:3.24}{}
+\begin{solution}{{3.24}}
+    Да, $w_t$ — белый шум!
+  
+\end{solution}
+\protect \hypertarget {soln:4.1}{}
+\begin{solution}{{4.1}}
+  \[
+    \hat y_{4|3} = l_3
+  \]
+  \[
+    y_4 - \hat y_{4|3} = l_3 + \varepsilon_4 - l_3 = \varepsilon_4
+  \]
+  \[
+  \Var(y_4 - \hat y_{4|3} \mid \mathcal{F}_3) = \Var(\varepsilon_4 \mid \mathcal{F}_3) = \Var(\varepsilon_4)
+  \]
+  \[
+  \hat y_{5|3} = l_3
+  \]
+  \begin{multline}
+  y_5 - \hat y_{5|3} = l_4  + \varepsilon_5 - l_3  = (l_3 + \alpha \varepsilon_4)  +
+   \varepsilon_5 - l_3 = \\
+  = \varepsilon_5 + \alpha  \varepsilon_4
+  \end{multline}
+  \[
+  \Var(y_5 - \hat y_{5|3} \mid \mathcal{F}_3) = \Var(\varepsilon_5 + \alpha  \varepsilon_4 )
+  \]
+
+\end{solution}
+\protect \hypertarget {soln:4.2}{}
+\begin{solution}{{4.2}}
+\[
+\hat y_{4|3} = l_3 + b_3
+\]
+\[
+y_4 - \hat y_{4|3} = l_3 + b_3 + \varepsilon_4 - (l_3 + b_3) = \varepsilon_4
+\]
+\[
+\Var(y_4 - \hat y_{4|3} \mid \mathcal{F}_3) = \Var(\varepsilon_4 \mid \mathcal{F}_3) = \Var(\varepsilon_4)
+\]
+\[
+\hat y_{5|3} = l_3 + 2b_3
+\]
+\begin{multline}
+y_5 - \hat y_{5|3} = l_4 + b_4 + \varepsilon_5 - (l_3 + 2b_3) = (l_3 + b_3 + \alpha \varepsilon_4)  +
+(b_3 + \beta \varepsilon_4) + \varepsilon_5 - (l_3 + 2b_3) = \\
+= \varepsilon_5 + (\alpha + \beta) \varepsilon_4
+\end{multline}
+\[
+\Var(y_5 - \hat y_{5|3} \mid \mathcal{F}_3) = \Var(\varepsilon_5 + (\alpha + \beta) \varepsilon_4 )
+\]
+\end{solution}
+\protect \hypertarget {soln:4.3}{}
+\begin{solution}{{4.3}}
+\end{solution}
+\protect \hypertarget {soln:4.4}{}
+\begin{solution}{{4.4}}
+\end{solution}
+\protect \hypertarget {soln:4.5}{}
+\begin{solution}{{4.5}}
+\end{solution}
+\protect \hypertarget {soln:4.6}{}
+\begin{solution}{{4.6}}
+^^I\begin{enumerate}
+^^I^^I\item Простое экспоненциальное сглаживание, ETS-ANN; ARIMA(0,1,1)
+^^I^^I\item Аддитивное сглаживание Хольта, ETS-AAN; ARIMA(0,2,2)
+^^I^^I\item Аддитивное сглаживание Хольта с угасающим трендом, ETS-AAdN; ARIMA(1,1,2)
+^^I^^I\item Аддитивное сглаживание Хольта-Винтерса для месячных данных, ETS-AAA; ARIMA(0,1,13)-SARIMA(0,1,0)
+^^I^^I\item Аддитивное сглаживание Хольта-Винтерса с угасающим трендом для месячных данных, ETS-AAdA; ARIMA(0,1,13)-SARIMA(0,1,0)
+^^I^^I\item ETS-ANA; ARIMA(0,1,12)-SARIMA(0,1,0)
+^^I\end{enumerate}
+\end{solution}
+\protect \hypertarget {soln:4.7}{}
+\begin{solution}{{4.7}}
+По $l_0$, $b_0$;
+\end{solution}
+\protect \hypertarget {soln:4.8}{}
+\begin{solution}{{4.8}}
+  Только примерно, $\ln (1 + x) \approx x$.
+\end{solution}
+\protect \hypertarget {soln:4.9}{}
+\begin{solution}{{4.9}}
+\end{solution}
+\protect \hypertarget {soln:4.10}{}
+\begin{solution}{{4.10}}
+\end{solution}
+\protect \hypertarget {soln:4.11}{}
+\begin{solution}{{4.11}}
+\end{solution}
+\protect \hypertarget {soln:4.12}{}
+\begin{solution}{{4.12}}
+\end{solution}
+\protect \hypertarget {soln:5.1}{}
+\begin{solution}{{5.1}}
+  $\ln y$
+\end{solution}
+\protect \hypertarget {soln:6.1}{}
+\begin{solution}{{6.1}}
+\end{solution}
+\protect \hypertarget {soln:6.2}{}
+\begin{solution}{{6.2}}
+    \begin{enumerate}
+      \item Чтобы заниматься математикой по ночам.
+      \item За поддержку якобинцев.
+      \item Кофейник. Был разбит пулей.
+    \end{enumerate}
+\end{solution}
+\protect \hypertarget {soln:6.3}{}
+\begin{solution}{{6.3}}
+  
+\end{solution}
+\protect \hypertarget {soln:6.4}{}
+\begin{solution}{{6.4}}
+  
+\end{solution}
+\protect \hypertarget {soln:6.5}{}
+\begin{solution}{{6.5}}
+  
+\end{solution}
+\protect \hypertarget {soln:6.6}{}
+\begin{solution}{{6.6}}
+  
+\end{solution}
+\protect \hypertarget {soln:6.7}{}
+\begin{solution}{{6.7}}
+  
+\end{solution}
+\protect \hypertarget {soln:6.8}{}
+\begin{solution}{{6.8}}
+   Да, ряды являются ортогональными. Можно строить регрессии на эти регрессоры в любых комбинациях, оценки бет выходят одни и те же.
+   Другие ряды добавить нельзя — будет строгая мультиколлинеарность.
+ 
+\end{solution}
+\protect \hypertarget {soln:6.9}{}
+\begin{solution}{{6.9}}
+     На всякий случай, это был ряд $1$, $2$, $3$, $4$, $5$, $6$.
+   
+\end{solution}
+\protect \hypertarget {soln:6.10}{}
+\begin{solution}{{6.10}}
+   $1$, $1$, $1$, $2$, $2$, $2$
+   
+\end{solution}
+\protect \hypertarget {soln:7.1}{}
+\begin{solution}{{7.1}}
+\end{solution}
+\protect \hypertarget {soln:7.2}{}
+\begin{solution}{{7.2}}
+
+\end{solution}
+\protect \hypertarget {soln:7.3}{}
+\begin{solution}{{7.3}}
+
+\end{solution}
+\protect \hypertarget {soln:7.4}{}
+\begin{solution}{{7.4}}
+
+\end{solution}
+\protect \hypertarget {soln:7.5}{}
+\begin{solution}{{7.5}}
+$1$, $2$, $2$
+\end{solution}
+\protect \hypertarget {soln:7.6}{}
+\begin{solution}{{7.6}}
+\end{solution}
+\protect \hypertarget {soln:7.7}{}
+\begin{solution}{{7.7}}
+\end{solution}
+\protect \hypertarget {soln:7.8}{}
+\begin{solution}{{7.8}}
+\end{solution}
+\protect \hypertarget {soln:7.9}{}
+\begin{solution}{{7.9}}
+\end{solution}
+\protect \hypertarget {soln:7.10}{}
+\begin{solution}{{7.10}}
+Да, может быть и больше, и меньше.
+\end{solution}
+\protect \hypertarget {soln:7.11}{}
+\begin{solution}{{7.11}}
+
+\end{solution}
+\protect \hypertarget {soln:7.12}{}
+\begin{solution}{{7.12}}
+\[
+\Var(\e_t | \cF_{t-1}) = \Var(y_t| \cF_{t-1}) = 6 + 0.4 \sigma^2_{t-1} + 0.2\e_t^2
+\]
+\[
+\Var(\e_t) = 6/(1-0.4-0.2)=6/0.4=15
+\]
+\[
+\Var(y_t)=15/(1-0.36)
+\]
+\end{solution}
+\protect \hypertarget {soln:8.1}{}
+\begin{solution}{{8.1}}
+
+\begin{enumerate}
+\item $H_0$: ряд содержит единичный корень, $\beta=0$; $H_a$: ряд не содержит единичного корня, $\beta<0$
+\item $ADF=-0.4/0.1=-4$, $ADF_{crit}=-2.89$, $H_0$ отвергается
+\item Ряд стационарен
+\item При верной $H_0$ ряд не стационарен, и  $t$-статистика имеет не $t$-распределение, а распределение Дики-Фуллера.
+\end{enumerate}
+\end{solution}
+\protect \hypertarget {soln:9.1}{}
+\begin{solution}{{9.1}}
+
+\end{solution}
+\protect \hypertarget {soln:9.2}{}
+\begin{solution}{{9.2}}
+
+\end{solution}
+\protect \hypertarget {soln:9.3}{}
+\begin{solution}{{9.3}}
+
+$z_t$ стационарный, $x_t$ и $y_t$ не коинтегрированы
+\end{solution}
+\protect \hypertarget {soln:9.4}{}
+\begin{solution}{{9.4}}
+
+\end{solution}
+\protect \hypertarget {soln:9.5}{}
+\begin{solution}{{9.5}}
+$y_t$ и $s_t$; $z_t$ и $w_t$.
+\end{solution}
+\protect \hypertarget {soln:9.6}{}
+\begin{solution}{{9.6}}
+  \begin{enumerate}
+    \item $a_t = 0.5 a_{t-1} + u_t$, AR(1)
+    \item $b_t = b_{t-1} + u_t$, $b_0 = 0$, ARIMA(0, 1, 0)
+    \item $c_t = 0.5 b_t + \e_t$, ARIMA(0, 1, 1)
+    \item $d_t = d_{t-1} + a_t$, ARIMA(1, 1, 0)
+    \item $e_t = e_{t-1} + \e_t$, ARIMA(0, 1, 0)
+    \item $g_t = g_{t-1} + b_t$, ARIMA(0, 2, 0)
+    \item $h_t = 0.7 h_{t-1} + b_t$, ARIMA(1, 1, 0)
+  \end{enumerate}
+  коинтегрированы: $b_t$, $c_t$, $d_t$, $h_t$.
+\end{solution}
+\protect \hypertarget {soln:9.7}{}
+\begin{solution}{{9.7}}
+Процессы $y_t$ и $z_t$ коинтегрированы, $z_t - 1.5y_t$ стационарен.
+Процессы $y_t$ и $r_t$ коинтегрированы, $r_t + 2y_t$ стационарен.
+\end{solution}
+\protect \hypertarget {soln:10.1}{}
+\begin{solution}{{10.1}}
+\end{solution}
+\protect \hypertarget {soln:10.2}{}
+\begin{solution}{{10.2}}
+\end{solution}
+\protect \hypertarget {soln:10.3}{}
+\begin{solution}{{10.3}}
+\end{solution}
+\protect \hypertarget {soln:10.4}{}
+\begin{solution}{{10.4}}
+\end{solution}

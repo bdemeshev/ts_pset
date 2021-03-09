@@ -57,6 +57,15 @@
 
 
 
+\usepackage[bibencoding = auto,
+style = alphabetic,
+backend = biber,
+citestyle = alphabetic,
+sorting = none]{biblatex}
+
+\addbibresource{ts_pset_main.bib}
+
+
 % не включаем в текст, тк есть репозиторий, однако для облегчения работы с репой:
 % makefile: zip all tex, здесь сделать ссылку на zip - для воспроизводимости неплохо бы :)
 
@@ -197,27 +206,12 @@
 % в биб-файл
 %---------------------------------------------------------------------------------------------------------------------------------------------------------
 
-\begin{thebibliography}{11}
-\bibitem{Greene}
-Greene\,W.\,H. Econometric Analysis. Prentice Hall, 2012.
-
-\bibitem{Francq}
-Francq\,C., Zakoian\,J.-M. GARCH models: structure, statistical inference, and financial applications. Wiley, 2010.
-
-\bibitem{Tsay}
-Tsay\,R.\,S. Analysis of Financial Time Series. Wiley, 2005.
-
-\bibitem{Shiryaev_SFM}
-Ширяев\,А.\,Н. Основы стохастической финансовой математики. Т.~1. M.: ФАЗИС, 2004.
-
-\bibitem{Shiryaev_Prob}
-Ширяев\,А.\,Н. Вероятность. Т. \,1. М.: МЦНМО, 2007.
-\end{thebibliography}
+\chapter{Источники мудрости}
+\printbibliography[heading=none]
 
 \printindex
 
 \chapter*{Список обозначений}
 
-\tableofcontents
 
 \end{document}

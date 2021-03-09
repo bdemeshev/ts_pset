@@ -1,5 +1,9 @@
+% !TEX root = ../ts_pset_main.tex
+
+
 \chapter{ETS}
 
+Почитать про ETS модели в книжке \cite{hyndman2018forecasting}.
 
 \begin{problem}
   Рассмотрим ETS-ANN модель с $\alpha = 1/2$, $y_1=6$, $y_2=9$, $y_3 = 6$, $\sigma^2=9$.
@@ -125,11 +129,80 @@ y_5 - \hat y_{5|3} = l_4 + b_4 + \varepsilon_5 - (l_3 + 2b_3) = (l_3 + b_3 + \al
 
 
 \begin{problem}
-  Рассмотрим ETS-AAN модель. По каким параметрам модели оптимальные точки можно получить в явном виде?
-
-
+Рассмотрим ETS-AAN модель. По каким параметрам модели оптимальные точки можно получить в явном виде?
 \begin{sol}
 По $l_0$, $b_0$;
+\end{sol}
+\end{problem}
+
+\begin{problem}
+Процесс $y_t$ описывается $ETS(MNM)$ моделью. 
+Верно ли, что процесс $z_t = \ln y_t$ точно описывается $ETS(ANA)$ моделью? А примерно?
+\begin{sol}
+  Только примерно, $\ln (1 + x) \approx x$.
+\end{sol}
+\end{problem}
+  
+
+\begin{problem}
+Рассмотрим $ETS(AA_dN)$ модель с $\phi = 0.9$, $\alpha=0.3$, $\beta=0.1$ и $\sigma^2=16$. 
+Выразите 95\% предиктивный интервал для $y_{t+1}$ и $y_{t+2}$ через $\ell_t$, $b_t$, $y_t$ и $u_t$. 
+\begin{sol}
+\end{sol}
+\end{problem}
+
+\begin{problem}
+Найдите $\E(y_t)$, $\Var(y_t)$, $\Cov(y_t, y_{t+1})$ для $ETS(AAN)$ модели с заданными $\ell_0$, $b_0$, $\alpha$, $\beta$ и $\sigma^2$.
+\begin{sol}
+\end{sol}
+\end{problem}
+
+
+\begin{problem}
+Полугодовой $y_t$ моделируется с помощью $ETS(AAA)$ процесса:
+    
+\[
+\begin{cases}
+    u_t \sim \cN(0; 4) \\
+    s_t = s_{t-2} + 0.1 u_t \\
+    b_t = b_{t-1} + 0.2 u_t \\
+    \ell_t = \ell_{t-1} + b_{t-1} + 0.3 u_t \\
+    y_t = \ell_{t-1} + b_{t-1} + s_{t-2} + u_t \\
+\end{cases}    
+\]
+
+\begin{enumerate}
+    \item Известно, что $s_{100} = 2$, $s_{99} = -1.9$, $b_{100} = 0.5$, $\ell_{100} = 4$. Найдите 95\% предиктивный интервал для $y_{102}$. 
+    \item В этой задаче все параметры известны. Сколько параметров оценивается в реальной задаче прогнозирования с помощью $ETS(AAA)$ модели?
+\end{enumerate}
+\begin{sol}
+\end{sol}
+\end{problem}
+
+\begin{problem}
+Вспомним $ETS(AAN)$ модель, кстати, вот и уравнения:
+
+\[
+\begin{cases}
+y_t = \ell_{t-1} + b_{t-1} + u_t \\
+\ell_t = \ell_{t-1} + b_{t-1} + \alpha u_t \\
+b_t = b_{t-1} + \beta u_t \\
+u_t \sim \cN(0;\sigma^2) \\
+% s_t = s_{t-12} + \gamma \varepsilon_t \\
+\end{cases}
+\]
+
+\begin{enumerate}
+	\item 
+	Докажите, что ни при каких $\ell_0$ и $b_0$ этот процесс не будет стационарным. 
+	Или опровергните и приведите пример, при каких будет. 
+	
+	Константы $\alpha$, $\beta$ лежат в интервале $(0;1)$.
+	
+	\item При $l_{100} = 20$, $b_{100} = 2$, $\alpha=0.2$, $\beta=0.3$, $\sigma^2 = 16$ постройте
+	интервальный прогноз на один и два шага вперёд. 
+\end{enumerate}
+\begin{sol}
 \end{sol}
 \end{problem}
 
@@ -137,10 +210,10 @@ y_5 - \hat y_{5|3} = l_4 + b_4 + \varepsilon_5 - (l_3 + 2b_3) = (l_3 + b_3 + \al
 
 
 
-
-
-
 \chapter{TBATS}
+
+Оригинальная статья, \cite{de2011forecasting}.
+
 Относим к ETS как модель с одной ошибкой в разных уравнениях. 
 
 \begin{problem}
