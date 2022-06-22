@@ -1,4 +1,8 @@
 \protect \hypertarget {soln:1.1}{}
+\newcommand{\Var}[1]{\operatorname{Var}{\left(#1\right)}}
+\newcommand{\E}[1]{\mathbb{E}{\left(#1\right)}}
+\newcommand{\Cov}[2]{\operatorname{Cov}{\left(#1, #2\right)}}
+
 \begin{solution}{{1.1}}
 В данном случае статистика $DW$ не применима, так как есть лаг $y_{t-1}$ среди регрессоров.
 \end{solution}
@@ -470,7 +474,87 @@ $\E(y_t)=\frac{2}{0.48}\approx 4.17$
 \end{solution}
 \protect \hypertarget {soln:3.24}{}
 \begin{solution}{{3.24}}
-    Да, $w_t$ — белый шум!
+\textbf{1.}
+
+Пусть $(u_t)$ -- белый шум, рассмотрим следующий процесс:
+\[
+    w_t = (1 + 2L) (1 - 0.5L + 0.5^2 L^2 - 0.5^3 L^3+ \ldots)u_t
+\]
+
+У такого уравнения существует бесконечно много нестационарных решений, но если процесс $(w_t)$ стационарен, то он является белым шумом. Чтобы показать это, выпишем сначала определение белого шума, а затем проверим все ли свойства выполняются для $(w_t)$.
+\[
+    (u_t) \text{ -- белый шум} \quad \Leftrightarrow \quad  
+    \left\{\begin{aligned}
+        &\ \E{u_t} = 0 \\
+        &\Var{u_t} = \sigma^2 \\
+        &\Cov{u_t}{u_s} = 0 \quad \forall s \neq t
+    \end{aligned}\right.
+\]
+
+Преобразуем выражение для $w_t$:
+\begin{align*}
+    w_t =& (1 + 2L) (1 - 0.5L + 0.5^2 L^2 - 0.5^3 L^3+ \ldots)u_t \\ \\
+    &\quad \Rightarrow \quad w_t = \frac{1 + 2L}{1 - 0.5L}\cdot u_t \\
+    &\quad \Rightarrow \quad (1 - 0.5L)w_t = (1 + 2L) u_t \\
+    &\quad \Rightarrow \quad w_t - 0.5w_{t-1} = u_t + 2u_{t+1} \\
+    &\quad \Rightarrow \quad w_t = u_t + 2u_{t+1} + 0.5w_{t-1}
+\end{align*}
+
+Считаем, что процесс $(w_t)$ является стационарным, то есть для него выполняется:
+\[
+    \left\{\begin{aligned}
+        &\E{w_t} = \mu \\
+        &\Var{w_t} = \sigma_w^2 \\
+        &\Cov{w_t}{w_{t-k}} = \gamma_k \quad \forall k
+    \end{aligned}\right.
+\]
+
+Теперь наконец найдём мат.ожидание $w_t$ используя выписанные выше свойства процессов $(u_t)$ и $(w_t)$.
+\begin{gather*}
+    \E{w_t} = \E{u_t + 2u_{t+1} + 0.5w_{t-1}} = \E{u_t} + 2\cdot \E{u_{t+1}} + 0.5\cdot \E{w_{t-1}} = 0.5\cdot \E{w_t} \quad \Rightarrow \quad \E{w_t} = 0
+\end{gather*}
+
+Из стационарности $(w_t)$ дисперсия $\Var{w_t}$ уже не зависит от $t$, следовательно, второе свойство из системы для белого шума тоже выполняется. Осталось найти коварицию $w_t$ и $w_{t-k}$ для произвольного $k$ и показать, что она равна 0, сделаем это с помощью индукции. Тогда базой является следующее равенство:
+\[
+    \Cov{w_t}{w_{t-1}} = 0
+\]
+
+Раскроем коварицию и покажем, что это выполняется.
+\begin{align*}
+    \Cov{w_t}{w_{t-1}} &= \Cov{(1 + 2L) (1 - 0.5L + 0.5^2 L^2 - \ldots)u_t}{(1 + 2L) (1 - 0.5L + 0.5^2 L^2 - \ldots)u_{t-1}} = \\
+    &= \Cov{u_t + (2 - 0.5)u_{t-1} + (-1 +0.5^2)u_{t-2} + \ldots}{u_{t-1} + (2 - 0.5)u_{t-2} + \ldots} = \\
+    &= \left((2 - 0.5) + (-1 + 0.5^2)(2 - 0.5) + (0.5 - 0.5^3)(-1 + 0.5^2) + \ldots\right) \sigma^2 = \\
+    &= \left((2 - 0.5) + \sum_{i = 0}^{\infty}(-1 + 0.5^2)\cdot (-0.5)^i \cdot (2 - 0.5) \cdot (-0.5)^i\right) \sigma^2 = \\
+    &= \left((2 - 0.5) - (1 - 0.5^2)(2 - 0.5)\cdot \sum_{i = 0}^{\infty}(-0.5^2)^i\right) \sigma^2 = \\
+    &= \left((2 - 0.5) - \cancel{(1 - 0.5^2)}(2 - 0.5)\cdot \frac{1}{\cancel{(1 - 0.5^2)}}\right) \sigma^2 = \\
+    &= \big((2 - 0.5) - (2 - 0.5)\big) \sigma^2 = 0 \\
+\end{align*}
+
+Теперь докажем шаг индукции. Пусть для $k-1 > 0$ верно, что $\Cov{w_t}{w_{t-(k-1)}} = 0$, выведем аналогичное утверждение для $k$.
+\begin{align*}
+    \Cov{w_t}{w_{t-k+1}} &= \Cov{w_t}{u_{t-k+1} + 2u_{t-k+2} + 0.5w_{t-k}} = \\
+    &= \Cov{w_t}{u_{t-k+1} + 2u_{t-k+2}} + 0.5 \cdot \Cov{w_t}{w_{t-k}} \\ \\
+    \Cov{w_t}{u_{t-k+1} + 2u_{t-k+2}} &= \Cov{(1 + 2L) (1 - 0.5L + 0.5^2 L^2 - \ldots)u_t}{u_{t-k+1} + 2u_{t-k+2}} = \\
+    &= \Cov{u_t + (2 - 0.5)u_{t-1} + (-1 +0.5^2)u_{t-2} + \ldots}{u_{t-k+1} + 2u_{t-k+2}} = \\
+    &= \sum_{i=0}^{\infty} \Cov{(2 - 0.5) \cdot (-0.5)^i u_{t-i-t}}{u_{t-k+1} + 2u_{t-k+2}} = \\
+    &= \left[\begin{aligned}
+        t - i - 1 = t - k + 1 \quad \Rightarrow \quad i = k - 2 \\
+        t - i - 1 = t - k + 2 \quad \Rightarrow \quad i = k - 3 \\
+    \end{aligned}\right] = \\
+    &= (2 - 0.5) \cdot (-0.5)^{k-2} \sigma^2 + (2 - 0.5) \cdot (-0.5)^{k-3}\cdot 2 \sigma^2 = \\
+    &= (2 - 0.5) \cdot (-0.5)^{k-2} \sigma^2 \left(1 - 0.5 \cdot 2\right) = 0 \\ \\
+    \Rightarrow \quad \Cov{w_t}{w_{t-k}} &= 2\big(\Cov{w_t}{w_{t-k+1}} - \Cov{w_t}{u_{t-k+1} + 2u_{t-k+2}}\big) = 0
+\end{align*}
+
+Значит, третье свойство из системы для белого шума тоже выполняется, и $(w_t)$ действительно является белым шумом. Но опять же только если он стационарен, в другом случае решений бесконечно много и ни одно из них не является белым шумом, так как не стационарно.
+
+\textbf{2.}
+
+Как можно видеть из доказательства выше, умножение или деление на $(1 + \alpha L)$ для любого $|\alpha| \neq 1$ сохраняет белый шум. Аналогичное верно и для умножения или деления на $(1 + \alpha F)$ для любого $|\alpha| \neq 1$, это показывалось на лекциях, но можно и по аналогии с $L$ доказать. Тогда белым шумом являются и следующие стационарные процессы:
+\begin{gather*}
+    y_t = \frac{(1 + 0.2F)}{(1 + 0.3F)} u_t = (1 + 0.2F)(1 + 0.3F + 0.3^2F^2 + 0.3^3 F^3 + \ldots) u_t\\
+    v_t = (1 - 3L)(1 + 0.2 F) u_t = (1 - 3L + 0.2F - 0.6LF)u_t = (0.4 - 3L + 0.2F) u_t
+\end{gather*}
   
 \end{solution}
 \protect \hypertarget {soln:3.25}{}
@@ -547,6 +631,97 @@ y_5 - \hat y_{5|3} = l_4 + b_4 + \varepsilon_5 - (l_3 + 2b_3) = (l_3 + b_3 + \al
 \end{solution}
 \protect \hypertarget {soln:4.5}{}
 \begin{solution}{{4.5}}
+Для начала запишем уравнения для ETS-AAN модели в общем виде:
+\[
+    \left\{\begin{aligned}
+        u_t &\sim \mathcal{N}(0, \sigma^2), \quad iid \\
+        b_t &= b_{t-1} + \beta u_t \\
+        l_t &= l_{t-1} + b_{t-1} + \alpha u_t \\
+        y_t &= l_{t-1} + b_{t-1} + u_t
+    \end{aligned}\right.
+\]
+
+Теперь подставим известные параметры и начальные значения:
+\[
+    \left\{\begin{aligned}
+        u_t &\sim \mathcal{N}(0, 16), \quad iid \\
+        b_t &= b_{t-1} + \frac{3}{4} \cdot u_t && b_{99}=1 \\
+        l_t &= l_{t-1} + b_{t-1} + \frac{1}{2} \cdot u_t \qquad \qquad && l_{99}=8 \\
+        y_t &= l_{t-1} + b_{t-1} + u_t && y_{99}=10, \ y_{100}=8
+    \end{aligned}\right.
+\]
+
+\textbf{1.}
+
+Пользуясь этим уравнениям, найдём искомые $l_{100}$, $b_{100}$, $l_{98}$ и $b_{98}$:
+\begin{align*}
+    y_{100} = l_{99} + b_{99} + u_{100} \quad &\Rightarrow \quad u_{100} = y_{100} - l_{99} - b_{99} = 8 - 8 - 1 = -1 \\
+    &\Rightarrow \quad l_{100} = l_{99} + b_{99} + \frac{1}{2} \cdot u_{100} = 8 + 1 - \frac{1}{2} = 8.5 \\
+    &\Rightarrow \quad b_{100} = b_{99} + \frac{3}{4} \cdot u_{100} = 1 - \frac{3}{4} = \frac{1}{4} = 0.25\\
+\end{align*}
+\[
+    \left\{\begin{aligned}
+        b_{99} &= b_{98} + \frac{3}{4} \cdot u_{99} \\
+        l_{99} &= l_{98} + b_{98} + \frac{1}{2} \cdot u_{99} \\
+        y_{99} &= l_{98} + b_{98} + u_{99}
+    \end{aligned}\right.
+\]
+\begin{align*}
+    &\Rightarrow \quad b_{98} = b_{99} - \frac{3}{4} \cdot u_{99} \\
+    &\Rightarrow \quad l_{99} = l_{98} + b_{99} - \frac{3}{4} \cdot u_{99} + \frac{1}{2} \cdot u_{99} =  l_{98} + b_{99} - \frac{1}{4} \cdot u_{99} \\
+    &\Rightarrow \quad l_{98} = l_{99} - b_{99} + \frac{1}{4} \cdot u_{99} \\
+    &\Rightarrow \quad y_{99} = l_{99} - b_{99} + \frac{1}{4} \cdot u_{99} + b_{99} - \frac{3}{4} \cdot u_{99} + u_{99} = l_{99} + \frac{1}{2} \cdot u_{99} \\
+    &\Rightarrow \quad u_{99} = 2 \cdot (y_{99} - l_{99}) = 2 \cdot (10 - 8) = 4 \\
+    &\Rightarrow \quad b_{98} = b_{99} - \frac{3}{4} \cdot u_{99} = 1 - \frac{3}{4} \cdot 4 = -2 \\
+    &\Rightarrow \quad l_{98} = l_{99} - b_{99} + \frac{1}{4} \cdot u_{99} = 8 - 1 + \frac{1}{4} \cdot 4 = 8\\
+\end{align*}
+
+Итак, ответ в этом пункте:
+\[
+    l_{100} = 8.5, \qquad b_{100} = 0.25, \qquad l_{98} = 8, \qquad b_{98} = -2
+\]
+
+\textbf{2.}
+
+Точечный прогноз $\hat{y}_{101 \mid 100}$ равен мат.ожиданию $y_{101}$ при условии всей информации $\mathcal{F}_{100}$, которую мы знаем на шаге 100, а именно:
+\[
+    \hat{y}_{101 \mid 100} = \E{y_{101} \mid \mathcal{F}_{100}} = \E{l_{100} + b_{100} + u_{101}} = l_{100} + b_{100} = 8.5 + 0.25 = 8.75
+\]
+
+Аналогично найдём $\hat{y}_{102 \mid 100}$:
+\begin{align*}
+    \hat{y}_{102 \mid 100} &= \E{y_{102} \mid \mathcal{F}_{100}} = \E{l_{101} + b_{101} + u_{102}} = \E{l_{101}} + \E{b_{101}} = \\ &= \E{l_{100} + b_{100} + \frac{1}{2} \cdot u_{101}} + \E{b_{100} + \frac{3}{4} \cdot u_{101}} = \\
+    &= l_{100} + b_{100} + b_{100} = 8.5 + 0.25 + 0.25 = 9
+\end{align*}
+
+\textbf{3.} 
+
+В общем виде 95\% предиктивные интервалы для $y_{101}$ и $y_{102}$ вычисляются по следующим формулам соответственно:
+\begin{gather*}
+    y_{101} \in \left[\E{y_{101} \mid \mathcal{F}_{100}} - 1.96 \sqrt{\Var{y_{101} \mid \mathcal{F}_{100}}},\ \  \E{y_{101} \mid \mathcal{F}_{100}} + 1.96 \sqrt{\Var{y_{101} \mid \mathcal{F}_{100}}}\right] \\
+    y_{102} \in \left[\E{y_{102} \mid \mathcal{F}_{100}} - 1.96 \sqrt{\Var{y_{102} \mid \mathcal{F}_{100}}},\ \  \E{y_{102} \mid \mathcal{F}_{100}} + 1.96 \sqrt{\Var{y_{102} \mid \mathcal{F}_{100}}}\right]
+\end{gather*}
+
+Значит, нам осталось найти только дисперсии $y_{101}$ и $y_{102}$ при условии всё той же информации $\mathcal{F}_{100}$:
+\begin{align*}
+    \Var{y_{101} \mid \mathcal{F}_{100}} &= \Var{l_{100} + b_{100} + u_{101}} = \Var{u_{101}} = 16 \\
+    \Var{y_{102} \mid \mathcal{F}_{100}} &= \Var{l_{101} + b_{101} + u_{102}} = \Var{l_{100} + b_{100} + \frac{1}{2} \cdot u_{101} + b_{100} + \frac{3}{4} \cdot u_{101} + u_{102}} = \\
+    &= \Var{\frac{5}{4} \cdot u_{101} + u_{102}} = \frac{25}{16} \cdot \Var{u_{101}} + \Var{u_{102}} = \frac{25}{16} \cdot 16 + 16 = 41
+\end{align*}
+
+Значит, 95\% предиктивные интервалы для $y_{101}$ и $y_{102}$ следующие:
+\[
+\begin{aligned}
+    y_{101} &\in \big[8.75 - 1.96 \cdot 4; 8.75 + 1.96 \cdot 4\big] \\
+    y_{102} &\in \big[9 - 1.96 \cdot \sqrt{41}; 9 + 1.96 \cdot \sqrt{41}\big]
+\end{aligned}
+\quad \Rightarrow \quad
+\begin{aligned}
+    y_{101} &\in \big[0.91; 16.59\big] \\
+    y_{102} &\in \big[-3.55; 21.55\big]
+\end{aligned}
+\]
+
 \end{solution}
 \protect \hypertarget {soln:4.6}{}
 \begin{solution}{{4.6}}
@@ -572,9 +747,121 @@ y_5 - \hat y_{5|3} = l_4 + b_4 + \varepsilon_5 - (l_3 + 2b_3) = (l_3 + b_3 + \al
 \end{solution}
 \protect \hypertarget {soln:4.10}{}
 \begin{solution}{{4.10}}
+Выпишем модель $ETS(AAN)$ в общем виде:
+\[
+    \left\{\begin{aligned}
+        u_t &\sim \mathcal{N}(0, \sigma^2), \quad iid \\
+        b_t &= b_{t-1} + \beta u_t \\
+        l_t &= l_{t-1} + b_{t-1} + \alpha u_t \\
+        y_t &= l_{t-1} + b_{t-1} + u_t
+    \end{aligned}\right.
+\]
+
+Для начала выпишем выражение для $b_t$:
+\[
+    b_t = b_{t-1} + \beta u_t = b_0 + \beta(u_1 + \ldots + u_t) = b_0 + \sum_{i = 1}^t \beta u_i
+\]
+
+Также из последнего уравнения модели можно видеть. что $y_t$ выражается через сумму $l_{t-1} + b_{t-1}$. Значит, чтобы в дальнейшем посчитать требуемые $\E{y_t}$, $\Var{y_t}$, $\Cov{y_t}{y_{t-1}}$, нужно привести эту сумму к известным нам величинам: $l_0$, $b_0$, $\alpha$, $\beta$ и сумме некоторых $u_s$, для которых все эти величины мы можем найти, поскольку знаем их распределение. Докажем по индукции, что для $l_{t} + b_{t}$ верно равенство:
+\begin{align*}
+    l_{t} + b_{t} 
+    &= l_0 + (t + 1) b_0 + (\alpha + t\beta) u_1 + \ldots + (\alpha + 2\beta) u_{t-1} + (\alpha + \beta) u_t = \\
+    &= l_0 + (t + 1) b_0 + \sum_{i = 1}^t \big(\alpha + (t - i + 1)\beta\big) u_i
+\end{align*}
+
+Шаг индукции для $t = 1$ доказывается просто:
+\[
+    l_1 + b_1 = (l_0 + b_0 + \alpha u_1) + (b_0 + \beta u_1) = l_0 + 2 b_0 + (\alpha + \beta) u_1
+\]
+
+Теперь докажем шаг индукции: предположим, что для $t - 1$ такая формула верна, и выразим через неё аналогичную для $t$.
+\begin{align*}
+l_{t-1} + b_{t-1} &= l_0 + t b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i \\
+    l_t + b_t &= (l_{t-1} + b_{t-1} + \alpha u_t) + (b_{t-1} + \beta u_t) = \big(l_{t-1} + b_{t-1}\big) + b_{t-1} + (\alpha + \beta) u_t = \\
+    &= \Big( l_0 + t b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i \Big) + b_{t-1} + (\alpha + \beta) u_t = \\
+    &= \Big( l_0 + t b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i \Big) + b_0 + \sum_{i = 1}^{t-1} \beta u_i + (\alpha + \beta) u_t = \\
+    &= l_0 + (t + 1) b_0 + \sum_{i = 1}^{t-1} \Big(\big(\alpha + (t - i)\beta\big) u_i + \beta u_i \Big) + (\alpha + \beta) u_t = \\
+    &= l_0 + (t + 1) b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i + 1)\beta\big) u_i + (\alpha + \beta) u_t = \\
+    &= l_0 + (t + 1) b_0 + \sum_{i = 1}^{t} \big(\alpha + (t - i + 1)\beta\big) u_i \\
+    &&\blacksquare
+\end{align*}
+
+Теперь с помощью этой формулы можем найти все требуемые величины.
+\[
+    \E{y_t} = \E{l_{t-1} + b_{t-1} + u_t} = \E{l_{t-1} + b_{t-1}} = \E{l_0 + t b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i} = \E{l_0 + t b_0} = l_0 + tb_0 \\
+\]
+\begin{align*}
+    \Var{y_t} &= \Var{l_{t-1} + b_{t-1} + u_t} + \Var{l_0 + t b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i + u_t} = \\
+    &= \sum_{i = 1}^{t-1}\big(\alpha + (t - i)\beta\big)^2 \Var{ u_i } + \Var{u_t} = \sum_{i = 1}^{t-1}\big(\alpha + (t - i)\beta\big)^2 \sigma^2 + \sigma^2 = \\
+    &= \Big[k = t - i\Big]= \left( 1 + \sum_{k = 1}^{t-1}\big(\alpha + k\beta\big)^2 \right)\sigma^2 \\
+\end{align*}
+
+\begin{align*}
+    \Cov{y_t}{y_{t+1}} &= \Cov{l_{t-1} + b_{t-1} + u_t}{l_{t} + b_{t} + u_{t+1}} = \\
+    &= \Cov{l_0 + t b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i + u_t}{l_0 + (t+1) b_0 + \sum_{i = 1}^{t} \big(\alpha + (t - i + 1)\beta\big) u_i + u_{t+1}} = \\
+    &= \Cov{\sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i + u_t}{\sum_{i = 1}^{t} \big(\alpha + (t - i + 1)\beta\big) u_i} = \\
+    &= \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big)\big(\alpha + (t - i + 1)\beta\big) \sigma^2 + (\alpha + \beta) \sigma^2 = \\
+    &= \left( (\alpha + \beta) + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big)\big(\alpha + (t - i + 1)\beta\big) \right)\sigma^2 = \\
+    &= \Big[k = t - i\Big]= \left( (\alpha + \beta) + \sum_{k = 1}^{t-1} \big(\alpha + k\beta\big)\big(\alpha + (k + 1)\beta\big) \right)\sigma^2
+\end{align*}
+
 \end{solution}
 \protect \hypertarget {soln:4.11}{}
 \begin{solution}{{4.11}}
+\textbf{1.}
+
+Выпишем модель $ETS(AAA)$ для наших значений параметров:
+\[
+    \left\{\begin{aligned}
+        u_t &\sim \mathcal{N}(0, 4), \quad iid \\
+        s_t &= s_{t-2} + 0.1 u_t, && s_{99} = -1.9, \ s_{100} = 2\\
+        b_t &= b_{t-1} + 0.2 u_t, && b_{100} = 0.5\\
+        l_t &= l_{t-1} + b_{t-1} + 0.3 u_t, && l_{100} = 4 \\
+        y_t &= l_{t-1} + b_{t-1} + s_{t-2} + u_t
+    \end{aligned}\right.
+\]
+
+В общем виде 95\% предиктивный интервал для $y_{102}$ вычисляется по формуле:
+\[
+    y_{102} \in \left[\E{y_{102} \mid \mathcal{F}_{100}} - 1.96 \sqrt{\Var{y_{102} \mid \mathcal{F}_{100}}},\ \  \E{y_{102} \mid \mathcal{F}_{100}} + 1.96 \sqrt{\Var{y_{102} \mid \mathcal{F}_{100}}}\right]
+\]
+
+Так что сначала посчитаем мат.ожидание и дисперсию $y_{102}$ при условии информации $\mathcal{F}_{100}$.
+\begin{align*}
+    \E{y_{102} \mid \mathcal{F}_{100}} &= \E{l_{101} + b_{101} + s_{100} + u_{102} \mid \mathcal{F}_{100}} = \\
+    &= \E{l_{100} + 2b_{100} + s_{100} \mid \mathcal{F}_{100}} = \\
+    &= l_{100} + 2b_{100} + s_{100} = 4 + 2 \cdot 0.5 + 2 = 7 \\ \\
+    \Var{y_{102} \mid \mathcal{F}_{100}} &= \Var{l_{101} + b_{101} + s_{100} + u_{102} \mid \mathcal{F}_{100}} = \\
+    &= \Var{l_{100} + 2b_{100} + s_{100} + (0.3 + 0.2) u_{101} + u_{102} \mid \mathcal{F}_{100}} = \\
+    &= \Var{0.5 u_{101} + u_{102} \mid \mathcal{F}_{100}} = 0.25 \cdot 4 + 4 = 5
+\end{align*}
+
+Значит, искомый предиктивный интервал вот такой:
+\[
+    y_{102} \in \left[7 - 5 \cdot 1.96, \ \ 7 + 5 \cdot 1.96\right] \quad \Rightarrow \quad y_{102} \in \left[-2.8, \ \ 16.8\right]
+\]
+
+\textbf{2.}
+
+Чтобы понять, какое количество параметров оценивается в $ETS(AAA)$ модели для полугодовых данных, випишем эту модель в общем виде:
+\[
+    \left\{\begin{aligned}
+        u_t &\sim \mathcal{N}(0, \sigma^2), \quad iid \\
+        s_t &= s_{t-2} + \gamma u_t \\
+        b_t &= b_{t-1} + \beta u_t \\
+        l_t &= l_{t-1} + b_{t-1} + \alpha u_t \\
+        y_t &= l_{t-1} + b_{t-1} + s_{t-2} + u_t
+    \end{aligned}\right.
+\]
+
+В этой системе 4 параметра: $\alpha$, $\beta$, $\gamma$ и $\sigma$. Также для предсказания с помощью такой модели необходимо оценить начальные значения всех составляющих $y_t$: $l_0$, $b_0$, $s_0$, $s_{-1}$. При этом на начальные значения $s_i$ у нас есть дополнительное условие:
+\[
+    \sum_{i} s_i = 0 \quad \Rightarrow \quad s_{-1} + s_0 = 0
+\]
+
+Следовательно, нужно оценить только 7 параметров, поскольку $s_0$ однозначно выражается через $s_{-1}$ и его не нужно отдельно оценивать.
+
+
 \end{solution}
 \protect \hypertarget {soln:4.12}{}
 \begin{solution}{{4.12}}
