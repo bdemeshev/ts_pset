@@ -1,0 +1,121 @@
+\documentclass{article}
+\usepackage[russian]{babel}
+
+\usepackage[letterpaper,top=1.2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.5cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage{soul}
+\usepackage[rightcaption]{sidecap}
+\usepackage{wrapfig}
+\usepackage{float}
+
+\title{Временные ряды}
+\author{Демитраки Елизавета}
+\date{Июнь 2022}
+
+\begin{document}
+\maketitle
+\section{2.10}
+\begin{problem}
+Верно ли, что при удалении из стационарного ряда каждого второго наблюдения получается стационарный ряд?
+
+
+\begin{sol}
+Пусть $y_t, y_{t-1}, y_{t-2} \dots $ - стационарный временной ряд. Тогда 
+$
+E(y_t) = const, Cov(y_t, y_{t-k}) = \gamma_k  \forall t,k
+$. Рассмотрим теперь ряд $y_t$, из которого удалили каждое второго наблюдение: 
+$$
+y_t, y_{t-1}, y_{t-2}, y_{t-3}, y_{t-4}, \dots \rightarrow y_t, y_{t-2}, y_{t-4}, y_{t-6}, y_{t-8}, \dots \rightarrow \hat{y}_t, \hat{y}_{t-1}, \hat{y}_{t-2}, \hat{y}_{t-3}, \hat{y}_{t-4}, \dots
+$$
+Проверим условия стационарности для нового ряда $\hat{y}_t$:
+$$
+E(\hat{y}_t) = E(y_t) = E(y_{t-2}) = E(\hat{y}_{t-1})) = E(y_{t-4}) = E(\hat{y}_{t-2})) = \dots = E(\hat{y}_k) = const 
+$$
+$$
+Cov(\hat{y}_t, \hat{y}_{t-k}) = Cov(y_{2t}, y_{2t-2k}) = \gamma_{2k} 
+$$
+Все предпосылки для стационарности выполнены - $\hat{y}_t$ стационарен.
+\end{sol}
+\end{problem}
+
+\section{2.11}
+\begin{problem}
+У эконометрессы Ефросиньи был стационарный ряд. Ей было скучно и она подбрасывала неправильную монетку, выпадающую орлом с вероятностью $0.7$. Если выпадал орёл, она оставляла очередной $y_t$, если решка — то зачёркивала. Получается ли у Ефросиньи стационарный ряд?
+
+
+\begin{sol}
+Пусть $y_t, y_{t-1}, y_{t-2} \dots $ - имеющийся у Ефросиньи стационарный временной ряд, а $\hat{y}_t, \hat{y}_{t-1}, \hat{y}_{t-2}, \dots$ - временной ряд, получаемый при зачеркивании. Пусть $\hat{y}_{t-1}$ получилась путем выпадения орла на $y_k-1$. Тогда $\hat{y}_{t}$ равно $y_k$ с вероятностью 0.7 (вероятность того, что выпадет орел),
+равно $y_{k+1}$ с вероятностью 0.3*0.7 (на $y_k$ выпадет решка, а на $y_{k+1}$ выпадет орел), ..., равно $y_{k+n}$ с вероятностью $0.3^{n-1}*0.7$ (на $y_k$...$y_{k+n-1}$ выпадет решка, а на $y_{k+n}$ выпадет орел) и т.д. Обозначим событие "выпало $n$ решек и 1 орел" за $I_n$. Тогда распишем математическое ожидание:
+$$
+E(\hat{y}_t) = E(y_k * I_{0} + y_{k+1} * I_{1} + \dots y_{k+n} * I_{n} + \dots) = E(y_k * I_{0}) + E(y_{k+1} * I_{1}) + \dots + E(y_{k+n} * I_{n}) + \dots =$$
+$$=E(y_k) * p_{I_{0}} + E(y_{k+1}) * p_{I_{1}} + \dots + E(y_{k+n}) * p_{I_{n}} + \dots = E(y_k) * (1-q)^0*q + E(y_{k+1}) * (1-q)^1*q + \dots + E(y_{k+n}) * (1-q)^n*q + \dots = 
+$$
+$$
+= E(y_k)\sum_{i=0} (1-q)^i*q =  E(y_k) * \frac{q}{1 - (1 - q)} = E(y_k) = const
+$$
+$$
+Cov(\hat{y_t}; \hat{y}_{t+j}) = E(\hat{y_t}*\hat{y}_{t+j}) - E(\hat{y_t})E(\hat{y}_{t+j}) = E(\hat{y_t}*\hat{y}_{t+j}) - E(y_k)^2 = 0*E(y_k*y_k) + \dots + 0*E(y_k*y_{k+j-1}) + q^j E(y_k*y_{k+j}) +$$
+$$ + \dots + (1-q)^{h-1}q *C_{i-1}^{j-1}q^{j-1}(1-q)^{i-j}q E(y_{k+h}*y_{k+h+i}) + \dots - E(y_k)^2= \sum_{h > 0, i > j-1} (1-q)^{h-1 + i -j} C_{i-1}^{j-1}q^{j+1}E(y_{k+h}*y_{k+h+i}) - E(y_k)^2 = 
+$$
+$$ = \sum_{h > 0, i > j-1} (1-q)^{h-1 + i -j} C_{i-1}^{j-1}q^{j+1}(\gamma_{i} + E(y_{k})^2) - E(y_k)^2 = \sum_{i>j-1} (1-q)^{i-j-1}q^{j+1}C_{i-1}^{j-1}\gamma_i \sum_{h>0} (1-q)^h  +$$ $$ + E(y_k)^2\sum_{i>j-1} (1-q)^{i-j-1}q^{j+1}C_{i-1}^{j-1} - E(y_k)^2 
+$$
+$$
+E(y_{k+h}*y_{k+h+i}) = Cov(y_{k+h};y_{k+h+i}) + E(y_{k+h})^2 = \gamma_{i} + E(y_{k})^2 
+$$
+Заметим, что нам удалось расписать ковариацию как выражение, зависящее только от расстояния между наблюдениями. Итого математическое ожидание константно, а ковариации зависят только от расстояния между наблюдениями - ряд стационарен.
+
+\end{sol}
+\end{problem}
+
+\section{2.11}
+\begin{problem}
+Рассмотрим модель $y_t=\beta_1+\beta_2 x_{t1}+\ldots+\beta_k x_{tk}+e_t$, где $e_t$ подчиняются автокорреляционной схеме первого порядка, т.е.
+\begin{enumerate}
+\item $e_t=\rho e_{t-1}+u_t$, $-1<\rho<1$
+\item $Var(e_t)=const$, $E(e_t)=const$
+\item $Var(u_t)=\sigma^2$, $E(u_t)=0$
+\item Величины $u_t$ независимы между собой
+\item Величины $u_t$ и $e_s$ независимы, если $t\geq s$
+\end{enumerate}
+Найдите:
+\begin{enumerate}
+\item $E(e_t)$, $Var(e_t)$
+\item $Cov(e_t,e_{t+h})$
+\item $Corr(e_t,e_{t+h})$
+\end{enumerate}
+
+\begin{sol}
+Решение:
+$$
+E(e_t) = E(\rho e_{t-1}+u_t) = \rho E( e_{t-1})+E(u_t) = \rho E( e_{t-1})
+$$ при условии, что $E(e_t)=const$, получаем:
+$$
+x = \rho x \rightarrow (\rho - 1)x = 0 \rightarrow x = 0, \rho < 1 \rightarrow E(e_t) = 0
+$$
+$$
+Var(e_t) = Var(\rho e_{t-1}+u_t) = Var(\rho e_{t-1})+ Var(u_t) + 2Cov(\rho e_{t-1}, u_t) = \rho^2 Var(e_{t-1})+ \sigma^2 
+$$
+при условии, что $Var(e_t)=const$, получаем:
+$$
+x = \rho^2 x + \sigma^2 \rightarrow x = \frac{\sigma^2}{1 - \rho^2} \rightarrow Var(e_t) = \frac{\sigma^2}{1 - \rho^2}
+$$
+$$
+Cov(e_t,e_{t+h}) = Cov(e_t,\rho e_{t+h-1}+u_{t+h}) =
+Cov(e_t,\rho (\rho e_{t+h-2}+u_{t+h-1})+u_{t+h}) = Cov(e_t,\rho^{h} e_{t}+\sum_{i=t+1}^{t+h} \rho^{t+h-i}u_{i}) = $$ $$= Cov(e_t,\rho^{h} e_{t})+Cov(e_t, \sum_{i=t+1}^{t+h} \rho^{t+h-i}u_{i}) = Cov(e_t,\rho^{h} e_{t}) = \rho^{h} Var(e_t) = \rho^{h} \frac{\sigma^2}{1 - \rho^2}
+$$ 
+$$
+Corr(e_t, e_{t+h}) = \frac{Cov(e_t,e_{t+h})}{\sqrt{Var(e_t)} \sqrt{Var(e_{t+h})}} = \frac{Cov(e_t,e_{t+h})}{Var(e_t)} = \frac{\rho^{h} \frac{\sigma^2}{1 - \rho^2}}{\frac{\sigma^2}{1 - \rho^2}} = \rho^{h}
+$$
+Ответ:
+\begin{enumerate}
+\item $E(e_t)=0$, $Var(e_t)=\sigma^2/(1-\rho^2)$
+\item $Cov(e_t,e_{t+h})=\rho^h\cdot \sigma^2/(1-\rho^2)$
+\item $Corr(e_t,e_{t+h})=\rho^h$
+\end{enumerate}
+\end{sol}
+\end{problem}
+\end{document}
