@@ -10,67 +10,67 @@
 
 
   \begin{enumerate}
-    \item Найдите величину $l_0$, которая минимизирует $RSS$;
+    \item Найдите величину $\ell_0$, которая минимизирует $RSS$;
     \item Постройте точечный прогноз $\hat y_{4|2}$, $\hat y_{5|2}$;
      \item Постройте 95\%-ый предиктивный интервал для $y_{4}$ и $y_{5}$.
   \end{enumerate}
 \begin{sol}
   \[
-    \hat y_{4|3} = l_3 
+    \hat y_{4|3} = \ell_3 
   \]
   \[
-    y_4 - \hat y_{4|3} = l_3 + \varepsilon_4 - l_3 = \varepsilon_4  
+    y_4 - \hat y_{4|3} = \ell_3 + \varepsilon_4 - \ell_3 = \varepsilon_4  
   \]
   \[
-  \Var(y_4 - \hat y_{4|3} \mid \mathcal{F}_3) = \Var(\varepsilon_4 \mid \mathcal{F}_3) = \Var(\varepsilon_4)  
+  \Var(y_4 - \hat y_{4|3} \mid \cF_3) = \Var(\varepsilon_4 \mid \cF_3) = \Var(\varepsilon_4)  
   \]
   \[
-  \hat y_{5|3} = l_3 
+  \hat y_{5|3} = \ell_3 
   \]
   \begin{multline}
-  y_5 - \hat y_{5|3} = l_4  + \varepsilon_5 - l_3  = (l_3 + \alpha \varepsilon_4)  + 
-   \varepsilon_5 - l_3 = \\
+  y_5 - \hat y_{5|3} = \ell_4  + \varepsilon_5 - \ell_3  = (\ell_3 + \alpha \varepsilon_4)  + 
+   \varepsilon_5 - \ell_3 = \\
   = \varepsilon_5 + \alpha  \varepsilon_4 
   \end{multline}
   \[
-  \Var(y_5 - \hat y_{5|3} \mid \mathcal{F}_3) = \Var(\varepsilon_5 + \alpha  \varepsilon_4 )  
+  \Var(y_5 - \hat y_{5|3} \mid \cF_3) = \Var(\varepsilon_5 + \alpha  \varepsilon_4 )  
   \]
     
 \end{sol}
 \end{problem}
 
 \begin{problem}
-  Рассмотрим ETS-AAN модель с $\alpha = 1/2$, $\beta=3/4$, $l_{0}=7$, $b_0=2$, $y_1=6$, $y_2=9$, $y_3=3$, $\sigma^2=9$.
+  Рассмотрим ETS-AAN модель с $\alpha = 1/2$, $\beta=3/4$, $\ell_{0}=7$, $b_0=2$, $y_1=6$, $y_2=9$, $y_3=3$, $\sigma^2=9$.
   \begin{enumerate}
     \item Постройте точечный прогноз $\hat y_{4|3}$, $\hat y_{5|3}$;
     \item Постройте 95\%-ый предиктивный интервал для $y_{4}$ и $y_{5}$.
   \end{enumerate}
 \begin{sol}
 \[
-\hat y_{4|3} = l_3 + b_3
+\hat y_{4|3} = \ell_3 + b_3
 \]
 \[
-y_4 - \hat y_{4|3} = l_3 + b_3 + \varepsilon_4 - (l_3 + b_3) = \varepsilon_4  
+y_4 - \hat y_{4|3} = \ell_3 + b_3 + \varepsilon_4 - (\ell_3 + b_3) = \varepsilon_4  
 \]
 \[
-\Var(y_4 - \hat y_{4|3} \mid \mathcal{F}_3) = \Var(\varepsilon_4 \mid \mathcal{F}_3) = \Var(\varepsilon_4)  
+\Var(y_4 - \hat y_{4|3} \mid \cF_3) = \Var(\varepsilon_4 \mid \cF_3) = \Var(\varepsilon_4)  
 \]
 \[
-\hat y_{5|3} = l_3 + 2b_3
+\hat y_{5|3} = \ell_3 + 2b_3
 \]
 \begin{multline}
-y_5 - \hat y_{5|3} = l_4 + b_4 + \varepsilon_5 - (l_3 + 2b_3) = (l_3 + b_3 + \alpha \varepsilon_4)  + 
-(b_3 + \beta \varepsilon_4) + \varepsilon_5 - (l_3 + 2b_3) = \\
+y_5 - \hat y_{5|3} = \ell_4 + b_4 + \varepsilon_5 - (\ell_3 + 2b_3) = (\ell_3 + b_3 + \alpha \varepsilon_4)  + 
+(b_3 + \beta \varepsilon_4) + \varepsilon_5 - (\ell_3 + 2b_3) = \\
 = \varepsilon_5 + (\alpha + \beta) \varepsilon_4 
 \end{multline}
 \[
-\Var(y_5 - \hat y_{5|3} \mid \mathcal{F}_3) = \Var(\varepsilon_5 + (\alpha + \beta) \varepsilon_4 )  
+\Var(y_5 - \hat y_{5|3} \mid \cF_3) = \Var(\varepsilon_5 + (\alpha + \beta) \varepsilon_4 )  
 \]
 \end{sol}
 \end{problem}
 
 \begin{problem}
-  Рассмотрим ETS-AAN модель с $\alpha = 1/2$, $\beta=3/4$, $l_{0}=7$, $y_1=6$, $y_2=9$, $\sigma^2=16$.
+  Рассмотрим ETS-AAN модель с $\alpha = 1/2$, $\beta=3/4$, $\ell_{0}=7$, $y_1=6$, $y_2=9$, $\sigma^2=16$.
 
 
   \begin{enumerate}
@@ -83,7 +83,7 @@ y_5 - \hat y_{5|3} = l_4 + b_4 + \varepsilon_5 - (l_3 + 2b_3) = (l_3 + b_3 + \al
 \end{problem}
 
 \begin{problem}
-  Рассмотрим ETS-AAN модель с $\alpha = 1/2$, $\beta=3/4$, $l_{0}=7$, $y_1=6$, $y_2=9$, $y_3=3$.
+  Рассмотрим ETS-AAN модель с $\alpha = 1/2$, $\beta=3/4$, $\ell_{0}=7$, $y_1=6$, $y_2=9$, $y_3=3$.
 
   Выпишите сумму квадратов ошибок прогнозов на один шаг вперёд через $b_0$.
   % минимизация тут длинная
@@ -94,13 +94,101 @@ y_5 - \hat y_{5|3} = l_4 + b_4 + \varepsilon_5 - (l_3 + 2b_3) = (l_3 + b_3 + \al
 
 
 \begin{problem}
-  Рассмотрим ETS-AAN модель с $\alpha = 1/2$, $\beta=3/4$, $l_{99}=8$, $b_{99}=1$, $y_{99}=10$, $y_{100}=8$, $\sigma^2=16$.
+  Рассмотрим ETS-AAN модель с $\alpha = 1/2$, $\beta=3/4$, $\ell_{99}=8$, $b_{99}=1$, $y_{99}=10$, $y_{100}=8$, $\sigma^2=16$.
   \begin{enumerate}
-    \item Найдите $l_{100}$, $b_{100}$, $l_{98}$, $b_{98}$;
+    \item Найдите $\ell_{100}$, $b_{100}$, $\ell_{98}$, $b_{98}$;
     \item Постройте точечный прогноз $\hat y_{101|100}$, $\hat y_{102|100}$;
     \item Постройте 95\%-ый предиктивный интервал для $y_{101}$ и $y_{102}$.
   \end{enumerate}
 \begin{sol}
+  Для начала запишем уравнения для ETS-AAN модели в общем виде:
+  \[
+    \begin{cases}
+          u_t \sim \cN (0, \sigma^2), \quad iid \\
+          b_t = b_{t-1} + \beta u_t \\
+          \ell_t = \ell_{t-1} + b_{t-1} + \alpha u_t \\
+          y_t = \ell_{t-1} + b_{t-1} + u_t
+    \end{cases}
+  \]
+  
+  Теперь подставим известные параметры и начальные значения:
+  \[
+      \begin{cases}
+          u_t \sim \cN (0, 16)   \\
+          b_t = b_{t-1} + \frac{3}{4} \cdot u_t,  b_{99}=1 \\
+          \ell_t = \ell_{t-1} + b_{t-1} + \frac{1}{2} \cdot u_t, \ell_{99}=8 \\
+          y_t = \ell_{t-1} + b_{t-1} + u_t,  y_{99}=10,  y_{100}=8
+      \end{cases}
+  \]
+  
+  \begin{enumerate}
+    \item Пользуясь этим уравнениям, найдём искомые $\ell_{100}$, $b_{100}$, $\ell_{98}$ и $b_{98}$:
+  \begin{align*}
+      y_{100} = \ell_{99} + b_{99} + u_{100} \quad &\Rightarrow \quad u_{100} = y_{100} - \ell_{99} - b_{99} = 8 - 8 - 1 = -1 \\
+      &\Rightarrow \quad \ell_{100} = \ell_{99} + b_{99} + \frac{1}{2} \cdot u_{100} = 8 + 1 - \frac{1}{2} = 8.5 \\
+      &\Rightarrow \quad b_{100} = b_{99} + \frac{3}{4} \cdot u_{100} = 1 - \frac{3}{4} = \frac{1}{4} = 0.25\\
+  \end{align*}
+  \[
+      \begin{cases}
+          b_{99} = b_{98} + \frac{3}{4} \cdot u_{99} \\
+          \ell_{99} = \ell_{98} + b_{98} + \frac{1}{2} \cdot u_{99} \\
+          y_{99} = \ell_{98} + b_{98} + u_{99}
+      \end{cases}
+  \]
+  \begin{align*}
+      &\Rightarrow \quad b_{98} = b_{99} - \frac{3}{4} \cdot u_{99} \\
+      &\Rightarrow \quad \ell_{99} = \ell_{98} + b_{99} - \frac{3}{4} \cdot u_{99} + \frac{1}{2} \cdot u_{99} =  \ell_{98} + b_{99} - \frac{1}{4} \cdot u_{99} \\
+      &\Rightarrow \quad \ell_{98} = \ell_{99} - b_{99} + \frac{1}{4} \cdot u_{99} \\
+      &\Rightarrow \quad y_{99} = \ell_{99} - b_{99} + \frac{1}{4} \cdot u_{99} + b_{99} - \frac{3}{4} \cdot u_{99} + u_{99} = \ell_{99} + \frac{1}{2} \cdot u_{99} \\
+      &\Rightarrow \quad u_{99} = 2 \cdot (y_{99} - \ell_{99}) = 2 \cdot (10 - 8) = 4 \\
+      &\Rightarrow \quad b_{98} = b_{99} - \frac{3}{4} \cdot u_{99} = 1 - \frac{3}{4} \cdot 4 = -2 \\
+      &\Rightarrow \quad \ell_{98} = \ell_{99} - b_{99} + \frac{1}{4} \cdot u_{99} = 8 - 1 + \frac{1}{4} \cdot 4 = 8\\
+  \end{align*}
+  
+  Итак, ответ в этом пункте:
+  \[
+      \ell_{100} = 8.5, \qquad b_{100} = 0.25, \qquad \ell_{98} = 8, \qquad b_{98} = -2
+  \]
+  
+  \item  Точечный прогноз $\hat{y}_{101 \mid 100}$ равен математическому ожиданию $y_{101}$ 
+  при условии всей информации $\cF_{100}$, которую мы знаем на шаге 100, а именно:
+  \[
+      \hat{y}_{101 \mid 100} = \E(y_{101} \mid \cF_{100}) = \E(\ell_{100} + b_{100} + u_{101}\mid \cF_{100}) = \ell_{100} + b_{100} = 8.5 + 0.25 = 8.75
+  \]
+  
+  Аналогично найдём $\hat{y}_{102 \mid 100}$:
+  \begin{align*}
+      \hat{y}_{102 \mid 100} &= \E(y_{102} \mid \cF_{100}) = \E(\ell_{101} + b_{101} + u_{102}) = \E(\ell_{101}) + \E(b_{101}) = \\ 
+      &= \E\left(\ell_{100} + b_{100} + \frac{1}{2} \cdot u_{101}\right) + \E\left(b_{100} + \frac{3}{4} \cdot u_{101}\right) = \\
+      &= \ell_{100} + b_{100} + b_{100} = 8.5 + 0.25 + 0.25 = 9
+  \end{align*}
+  
+  \item В общем виде 95\% предиктивные интервалы для $y_{101}$ и $y_{102}$ вычисляются по следующим формулам соответственно:
+  \begin{gather*}
+      y_{101} \in \left[\E(y_{101} \mid \cF_{100}) - 1.96 \sqrt{\Var(y_{101} \mid \cF_{100})},\ \  \E(y_{101} \mid \cF_{100}) + 1.96 \sqrt{\Var(y_{101} \mid \cF_{100})}\right] \\
+      y_{102} \in \left[\E(y_{102} \mid \cF_{100}) - 1.96 \sqrt{\Var(y_{102} \mid \cF_{100})},\ \  \E(y_{102} \mid \cF_{100}) + 1.96 \sqrt{\Var(y_{102} \mid \cF_{100})}\right]
+  \end{gather*}
+  
+  Значит, нам осталось найти только дисперсии $y_{101}$ и $y_{102}$ при условии всё той же информации $\cF_{100}$:
+  \begin{align*}
+      \Var(y_{101} \mid \cF_{100}) &= \Var(\ell_{100} + b_{100} + u_{101}) = \Var(u_{101}) = 16 \\
+      \Var(y_{102} \mid \cF_{100}) &= \Var(\ell_{101} + b_{101} + u_{102}) = \Var(\ell_{100} + b_{100} + \frac{1}{2} \cdot u_{101} + b_{100} + \frac{3}{4} \cdot u_{101} + u_{102}) = \\
+      &= \Var\left(\frac{5}{4} \cdot u_{101} + u_{102}\right) = \frac{25}{16} \cdot \Var(u_{101}) + \Var(u_{102}) = \frac{25}{16} \cdot 16 + 16 = 41
+  \end{align*}
+  
+  Значит, 95\% предиктивные интервалы для $y_{101}$ и $y_{102}$ следующие:
+  \[
+  \begin{aligned}
+      y_{101} &\in \big[8.75 - 1.96 \cdot 4; 8.75 + 1.96 \cdot 4\big] \\
+      y_{102} &\in \big[9 - 1.96 \cdot \sqrt{41}; 9 + 1.96 \cdot \sqrt{41}\big]
+  \end{aligned}
+  \quad \Rightarrow \quad
+  \begin{aligned}
+      y_{101} &\in \big[0.91; 16.59\big] \\
+      y_{102} &\in \big[-3.55; 21.55\big]
+  \end{aligned}
+  \]
+\end{enumerate}
 \end{sol}
 \end{problem}
 
@@ -131,7 +219,7 @@ y_5 - \hat y_{5|3} = l_4 + b_4 + \varepsilon_5 - (l_3 + 2b_3) = (l_3 + b_3 + \al
 \begin{problem}
 Рассмотрим ETS-AAN модель. По каким параметрам модели оптимальные точки можно получить в явном виде?
 \begin{sol}
-По $l_0$, $b_0$;
+По $\ell_0$, $b_0$;
 \end{sol}
 \end{problem}
 
@@ -154,6 +242,64 @@ y_5 - \hat y_{5|3} = l_4 + b_4 + \varepsilon_5 - (l_3 + 2b_3) = (l_3 + b_3 + \al
 \begin{problem}
 Найдите $\E(y_t)$, $\Var(y_t)$, $\Cov(y_t, y_{t+1})$ для $ETS(AAN)$ модели с заданными $\ell_0$, $b_0$, $\alpha$, $\beta$ и $\sigma^2$.
 \begin{sol}
+  Выпишем модель $ETS(AAN)$ в общем виде:
+  \[
+      \begin{cases}
+          u_t \sim \mathcal{N}(0, \sigma^2), \quad iid \\
+          b_t = b_{t-1} + \beta u_t \\
+          \ell_t = \ell_{t-1} + b_{t-1} + \alpha u_t \\
+          y_t = \ell_{t-1} + b_{t-1} + u_t
+      \end{cases}
+  \]
+  
+  Для начала выпишем выражение для $b_t$:
+  \[
+      b_t = b_{t-1} + \beta u_t = b_0 + \beta(u_1 + \ldots + u_t) = b_0 + \sum_{i = 1}^t \beta u_i
+  \]
+  
+  Из последнего уравнения модели можно видеть, что $y_t$ выражается через сумму $\ell_{t-1} + b_{t-1}$. 
+  Значит, чтобы в дальнейшем посчитать требуемые $\E(y_t)$, $\Var(y_t)$, $\Cov(y_t, y_{t-1})$, нужно привести эту сумму к известным нам величинам: $\ell_0$, $b_0$, $\alpha$, $\beta$ и сумме некоторых $u_s$, для которых все эти величины мы можем найти, поскольку знаем их распределение. Докажем по индукции, что для $\ell_{t} + b_{t}$ верно равенство:
+  \begin{align*}
+      \ell_{t} + b_{t} 
+      &= \ell_0 + (t + 1) b_0 + (\alpha + t\beta) u_1 + \ldots + (\alpha + 2\beta) u_{t-1} + (\alpha + \beta) u_t = \\
+      &= \ell_0 + (t + 1) b_0 + \sum_{i = 1}^t \big(\alpha + (t - i + 1)\beta\big) u_i
+  \end{align*}
+  
+  Шаг индукции для $t = 1$ доказывается просто:
+  \[
+      \ell_1 + b_1 = (\ell_0 + b_0 + \alpha u_1) + (b_0 + \beta u_1) = \ell_0 + 2 b_0 + (\alpha + \beta) u_1
+  \]
+  
+  Теперь докажем шаг индукции: предположим, что для $t - 1$ такая формула верна, и выразим через неё аналогичную для $t$.
+  \begin{align*}
+  \ell_{t-1} + b_{t-1} &= \ell_0 + t b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i \\
+      \ell_t + b_t &= (\ell_{t-1} + b_{t-1} + \alpha u_t) + (b_{t-1} + \beta u_t) = \big(\ell_{t-1} + b_{t-1}\big) + b_{t-1} + (\alpha + \beta) u_t = \\
+      &= \Big( \ell_0 + t b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i \Big) + b_{t-1} + (\alpha + \beta) u_t = \\
+      &= \Big( \ell_0 + t b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i \Big) + b_0 + \sum_{i = 1}^{t-1} \beta u_i + (\alpha + \beta) u_t = \\
+      &= \ell_0 + (t + 1) b_0 + \sum_{i = 1}^{t-1} \Big(\big(\alpha + (t - i)\beta\big) u_i + \beta u_i \Big) + (\alpha + \beta) u_t = \\
+      &= \ell_0 + (t + 1) b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i + 1)\beta\big) u_i + (\alpha + \beta) u_t = \\
+      &= \ell_0 + (t + 1) b_0 + \sum_{i = 1}^{t} \big(\alpha + (t - i + 1)\beta\big) u_i \\
+      &&\blacksquare
+  \end{align*}
+  
+  Теперь с помощью этой формулы можем найти все требуемые величины.
+  \[
+      \E(y_t) = \E(\ell_{t-1} + b_{t-1} + u_t) = \E(\ell_{t-1} + b_{t-1}) = \E(\ell_0 + t b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i) = \E(\ell_0 + t b_0) = \ell_0 + tb_0 \\
+  \]
+  \begin{align*}
+      \Var(y_t) &= \Var(\ell_{t-1} + b_{t-1} + u_t) + \Var(\ell_0 + t b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i + u_t) = \\
+      &= \sum_{i = 1}^{t-1}\big(\alpha + (t - i)\beta\big)^2 \Var(u_i) + \Var(u_t) = \sum_{i = 1}^{t-1}\big(\alpha + (t - i)\beta\big)^2 \sigma^2 + \sigma^2 = \\
+      &= \Big[k = t - i\Big]= \left( 1 + \sum_{k = 1}^{t-1}\big(\alpha + k\beta\big)^2 \right)\sigma^2 \\
+  \end{align*}
+  
+  \begin{align*}
+      \Cov(y_t, y_{t+1}) &= \Cov(\ell_{t-1} + b_{t-1} + u_t, l_{t} + b_{t} + u_{t+1}) = \\
+      &= \Cov(\ell_0 + t b_0 + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i + u_t, l_0 + (t+1) b_0 + \sum_{i = 1}^{t} \big(\alpha + (t - i + 1)\beta\big) u_i + u_{t+1}) = \\
+      &= \Cov(\sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big) u_i + u_t, \sum_{i = 1}^{t} \big(\alpha + (t - i + 1)\beta\big) u_i) = \\
+      &= \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big)\big(\alpha + (t - i + 1)\beta\big) \sigma^2 + (\alpha + \beta) \sigma^2 = \\
+      &= \left( (\alpha + \beta) + \sum_{i = 1}^{t-1} \big(\alpha + (t - i)\beta\big)\big(\alpha + (t - i + 1)\beta\big) \right)\sigma^2 = \\
+      &= \Big[k = t - i\Big]= \left( (\alpha + \beta) + \sum_{k = 1}^{t-1} \big(\alpha + k\beta\big)\big(\alpha + (k + 1)\beta\big) \right)\sigma^2
+  \end{align*}
 \end{sol}
 \end{problem}
 
@@ -231,7 +377,7 @@ u_t \sim \cN(0;\sigma^2) \\
 	
 	Константы $\alpha$, $\beta$ лежат в интервале $(0;1)$.
 	
-	\item При $l_{100} = 20$, $b_{100} = 2$, $\alpha=0.2$, $\beta=0.3$, $\sigma^2 = 16$ постройте
+	\item При $\ell_{100} = 20$, $b_{100} = 2$, $\alpha=0.2$, $\beta=0.3$, $\sigma^2 = 16$ постройте
 	интервальный прогноз на один и два шага вперёд. 
 \end{enumerate}
 \begin{sol}
