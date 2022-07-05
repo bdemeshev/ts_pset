@@ -261,6 +261,28 @@ f_{Y_{t} \mid Y_{t-1}}(y_{t} \mid y_{t-1}) = \frac{1}{\sqrt{2\pi\sigma^2}}\exp{\
 \end{enumerate}
 
 \begin{sol}
+$
+\E(e_t) = \E(\rho e_{t-1}+u_t) = \rho \E( e_{t-1})+E(u_t) = \rho \E( e_{t-1})$. При условии, что $\E(e_t)=\text{const}$, получаем:
+\[
+x = \rho x \rightarrow (\rho - 1)x = 0 \rightarrow x = 0, \rho < 1 \rightarrow E(e_t) = 0
+\]
+\[
+\Var(e_t) = \Var(\rho e_{t-1}+u_t) = \Var(\rho e_{t-1})+ \Var(u_t) + 2\Cov(\rho e_{t-1}, u_t) = \rho^2 \Var(e_{t-1})+ \sigma^2 
+\]
+при условии, что $\Var(e_t)=\text{const}$, получаем:
+\[
+x = \rho^2 x + \sigma^2 \rightarrow x = \frac{\sigma^2}{1 - \rho^2} \rightarrow Var(e_t) = \frac{\sigma^2}{1 - \rho^2}
+\]
+\begin{align*} 
+\Cov(e_t,e_{t+h}) = \Cov(e_t,\rho e_{t+h-1}+u_{t+h}) =
+\Cov(e_t,\rho (\rho e_{t+h-2}+u_{t+h-1})+u_{t+h}) = \Cov(e_t,\rho^{h} e_{t}+\sum_{i=t+1}^{t+h} \rho^{t+h-i}u_{i}) = \\
+= \Cov(e_t,\rho^{h} e_{t})+\Cov(e_t, \sum_{i=t+1}^{t+h} \rho^{t+h-i}u_{i}) = \Cov(e_t,\rho^{h} e_{t}) = \rho^{h} \Var(e_t) =
+\rho^{h} \frac{\sigma^2}{1 - \rho^2}
+\end{align*}
+\[
+Corr(e_t, e_{t+h}) = \frac{\Cov(e_t,e_{t+h})}{\sqrt{\Var(e_t)} \sqrt{Var(e_{t+h})}} = \frac{\Cov(e_t,e_{t+h})}{\Var(e_t)} = \frac{\rho^{h} \frac{\sigma^2}{1 - \rho^2}}{\frac{\sigma^2}{1 - \rho^2}} = \rho^{h}
+\]
+Ответ:
 \begin{enumerate}
 \item $\E(\e_t)=0$, $\Var(\e_t)=\sigma^2/(1-\rho^2)$
 \item $\Cov(\e_t,\e_{t+h})=\rho^h\cdot \sigma^2/(1-\rho^2)$
