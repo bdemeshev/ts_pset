@@ -26,7 +26,9 @@
 
 
 \usepackage{tikz}
-\usepackage{minted}
+\usepackage{minted} % TODO: перейти на listings
+\usepackage{physics}
+
 
 \usepackage{amsmath, amssymb, amsthm, mathrsfs, amsfonts, dsfont, fancyhdr}
 \usepackage{amscd}
@@ -155,6 +157,11 @@ sorting = none]{biblatex}
       {%
       \end{myenum}}
 
+
+
+\AddEnumerateCounter{\asbuk}{\russian@alph}{щ} % для списков с русскими буквами
+\setlist[enumerate, 1]{label=\asbuk*),ref=\asbuk*} % цифра рядом с enumerate = уровень нумерации
+      
 
 
 \begin{document}

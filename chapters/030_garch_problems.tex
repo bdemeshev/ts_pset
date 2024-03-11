@@ -10,17 +10,13 @@
 \begin{problem}
 Рассмотрим следующий AR(1)-ARCH(1) процесс: \\
 $Y_{t}=1+0.5Y_{t-1}+\varepsilon_{t}$, $\varepsilon_{t}=\nu_{t}\cdot \sigma_{t}$ \\
-$\nu_{t}$ независимые $N(0;1)$ величины. \\
+$\nu_{t}$ независимые $\cN(0;1)$ величины. \\
 $\sigma^{2}_{t}=1+0.8\varepsilon^{2}_{t-1}$\\
 Также известно, что $Y_{100}=2$, $Y_{99}=1.7$
 \begin{enumerate}
-\item Найдите $E_{100}(\varepsilon^{2}_{101})$, $E_{100}(\varepsilon^{2}_{102})$, $E_{100}(\varepsilon^{2}_{103})$, $E(\varepsilon^{2}_{t})$
-\item $Var(Y_{t})$, $Var(Y_{t}|\mathcal{F}_{t-1})$
-\item Постройте доверительный интервал для $Y_{101}$:
-\begin{enumerate}
-\item проигнорировав условную гетероскедастичность
-\item учтя условную гетерескедастичность
-\end{enumerate}
+\item Найдите $\E_{100}(\varepsilon^{2}_{101})$, $\E_{100}(\varepsilon^{2}_{102})$, $\E_{100}(\varepsilon^{2}_{103})$, $\E(\varepsilon^{2}_{t})$.
+\item Найдите $\Var(Y_{t})$, $\Var(Y_{t}|\cF_{t-1})$.
+\item Постройте доверительный интервал для $Y_{101}$ при известном $Y_{100}$ и $Y_{99}$.
 \end{enumerate}
 \begin{sol}
 \end{sol}
@@ -30,7 +26,8 @@ $\sigma^{2}_{t}=1+0.8\varepsilon^{2}_{t-1}$\\
 
 
 \begin{problem}
-Рассмотрим GARCH(1,2) процесс $\e_t=\sigma_t \nu_t$, $\sigma^2=0.2+0.5\sigma^2_{t-1}+0.2\e_{t-1}^2+0.1\e_{t-2}^2$. Найдите безусловную дисперсию $\Var(y_t)$
+Рассмотрим GARCH(1,2) процесс $\e_t=\sigma_t \nu_t$, $\sigma^2=0.2+0.5\sigma^2_{t-1}+0.2\e_{t-1}^2+0.1\e_{t-2}^2$. 
+Найдите безусловную дисперсию $\Var(y_t)$.
 \begin{sol}
 
 \end{sol}
@@ -93,10 +90,10 @@ $1$, $2$, $2$
 Рассмотрим GARCH-процесс $\e_t=\sigma_t \cdot z_t$, $\sigma^2_t=k+g_1\sigma^2_{t-1}+a_1\e^2_{t-1}$. Найдите
 \begin{enumerate}
 \item $\E(z_t)$, $\E(z_t^2)$, $\E(\e_t)$, $\E(\e_t^2)$
-\item $\Var(z_t)$, $\Var(\e_t)$, $\Var(\e_t \mid \mathcal{F}_{t-1})$
-\item $\E(\e_t \mid \mathcal{F}_{t-1})$, $\E(\e_t^2 \mid \mathcal{F}_{t-1})$, $\E(\sigma^2_t \mid \mathcal{F}_{t-1})$
+\item $\Var(z_t)$, $\Var(\e_t)$, $\Var(\e_t \mid \cF_{t-1})$
+\item $\E(\e_t \mid \cF_{t-1})$, $\E(\e_t^2 \mid \cF_{t-1})$, $\E(\sigma^2_t \mid \cF_{t-1})$
 \item $\E(z_tz_{t-1})$, $\E(z_t^2z_{t-1}^2)$, $\Cov(\e_t,\e_{t-1})$, $\Cov(\e_t^2,\e_{t-1}^2)$
-\item $\lim_{h\to\infty} \E(\sigma^2_{t+h} \mid \mathcal{F}_t)$
+\item $\lim_{h\to\infty} \E(\sigma^2_{t+h} \mid \cF_t)$
 \end{enumerate}
 
 
@@ -128,7 +125,7 @@ $1$, $2$, $2$
 \begin{cases}
 y_t = 2 + \e_t \\
 \e_t = \sigma_t \cdot \nu_t \\
-\sigma^2_t = 10 + 0.5\e_t^2
+\sigma^2_t = 10 + 0.5\e_{t-1}^2
 \end{cases}
 \]
 
