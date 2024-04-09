@@ -7,6 +7,28 @@
 
 
 \begin{problem}
+Рассмотрим три разностных уравнения:
+\begin{align*}
+  (A) y_t = 1 + 0.5 y_{t-1} \\
+  (B) y_t = 1 + y_{t-1} \\
+  (C) y_t = 1 + 2 y_{t-1} \\
+\end{align*}
+\begin{enumerate}
+  \item Найдите все постоянные решения каждого уравнения.
+  \item Найдите все решения каждого уравнения. 
+  \item Сколько постоянных решений имеет уравнение $y_t = 1 + \beta y_{t-1}$ в зависимости от $\beta$?
+\end{enumerate}
+\begin{sol}
+  \begin{enumerate}
+    \item $a_t = 2$, уравнение $(B)$ не имеет постоянных решений, $c_t = -1$
+    \item $a_t = 2 + d 0.5^t$, $b_t = d + t$, $c_t = -1 + d 2^t$. 
+    \item уравнение $y_t = 1 + \beta y_{t-1}$ имеет единственное постоянное решение при $\beta \neq 1$ 
+  \end{enumerate}  
+\end{sol}
+\end{problem}
+  
+
+\begin{problem}
 Рассмотрим модель $y_t=\mu + \e_t$, где $\e_t$ — стационарный AR(1) процесс $\e_t=\rho \e_{t-1} + u_t$ с $u_t \sim \cN(0,\sigma^2)$. 
 
 Найдите условную логарифмическую функцию правдоподобия $\ln f(y_2, y_3, \ldots, y_n \mid \mu, \rho, \sigma^2, y_1)$.
